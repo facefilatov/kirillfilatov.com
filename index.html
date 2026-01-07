@@ -54,7 +54,7 @@
 </head>
 <body>
   <div class="video-container">
-    <a href="//facefilatov.kirillfilatov.com">
+    <a href="//facefilatov.kirillfilatov.com" id="videoLink">
       <video 
         id="mainVideo"
         autoplay 
@@ -62,37 +62,49 @@
         muted 
         playsinline
         preload="auto"
-        src="https://kirillfilatov.ucoz.com/2019/shower_intro.mp4"
-        type="video/mp4">
+        poster=""
+        src="https://kirillfilatov.ucoz.com/2019/shower_intro.mp4">
         Your browser does not support the video tag.
       </video>
     </a>
   </div>
 
   <script>
-    // Принудительное воспроизведение видео
+    // Получаем элементы
     const video = document.getElementById('mainVideo');
+    const videoLink = document.getElementById('videoLink');
     
-    // Попытка запустить видео при загрузке
-    video.play().catch(err => {
-      console.log('Autoplay prevented:', err);
-      // Запуск при первом взаимодействии пользователя
-      document.addEventListener('click', () => {
-        video.play();
-      }, { once: true });
-    });
-
-    // Дополнительная попытка при готовности видео
-    video.addEventListener('loadeddata', () => {
-      video.play().catch(err => console.log('Play error:', err));
-    });
-
-    // Убеждаемся что видео воспроизводится
-    video.addEventListener('canplay', () => {
+    // Блокируем переход по ссылке при клике на видео
+    videoLink.addEventListener('click', (e) => {
       if (video.paused) {
+        e.preventDefault(); // Отменяем переход по ссылке
         video.play().catch(err => console.log('Play error:', err));
       }
+      // Если видео воспроизводится, ссылка работает нормально
     });
+    
+    // Принудительное воспроизведение видео при загрузке
+    const tryPlay = () => {
+      video.play().catch(err => {
+        console.log('Autoplay prevented:', err);
+      });
+    };
+    
+    // Множественные попытки запуска для Safari
+    video.addEventListener('loadedmetadata', tryPlay);
+    video.addEventListener('loadeddata', tryPlay);
+    video.addEventListener('canplay', tryPlay);
+    
+    // Попытка сразу после загрузки DOM
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', tryPlay);
+    } else {
+      tryPlay();
+    }
+    
+    // Дополнительная попытка через небольшую задержку для Safari
+    setTimeout(tryPlay, 100);
+    setTimeout(tryPlay, 500);
   </script>
 
   <!-- Yandex.Metrika counter -->
