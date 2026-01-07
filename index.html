@@ -1,56 +1,133 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Kirill Filatov</title>
-
-<meta name="description" content="Оfficial site of Kirill Filatov">
-<meta name="keywords" content="Кирилл Филатов Kirill Filatov Music Музыка Detskaya Детская PaperMan LL Show ЛЛ Шоу Солнечный Город facefilatov">
-<meta https-equiv="content-language" content="en">
-<meta name="google-site-verification" content="Eo2595TTFaW49EesLrT_aOf1nkFwcpFEnGVCOMQX5XM" />
-
-<link rel="icon" href="https://kirillfilatov.ucoz.com/favicon.ico" type="image/x-icon" >
-
-<style>
-body{
-    background-color:black;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kirill Filatov</title>
+  <meta name="description" content="Official site of Kirill Filatov">
+  <meta name="keywords" content="Кирилл Филатов Kirill Filatov Music Музыка Detskaya Детская PaperMan LL Show ЛЛ Шоу Солнечный Город facefilatov">
+  <meta name="google-site-verification" content="Eo2595TTFaW49EesLrT_aOf1nkFwcpFEnGVCOMQX5XM">
+  <link rel="icon" href="https://kirillfilatov.ucoz.com/favicon.ico" type="image/x-icon">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-</style>
 
+    body {
+      background-color: #000;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      overflow-x: hidden;
+    }
 
+    .video-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter2150947 = new Ya.Metrika({
-                    id:2150947,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true,
-                    webvisor:true,
-                    trackHash:true
-                });
-            } catch(e) { }
-        });
+    .video-container a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
 
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
+    /* Скрываем контролы видео */
+    video::-webkit-media-controls {
+      display: none !important;
+    }
+
+    video::-webkit-media-controls-enclosure {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <a href="//facefilatov.kirillfilatov.com">
+      <video 
+        id="mainVideo"
+        autoplay 
+        loop 
+        muted 
+        playsinline
+        preload="auto"
+        src="https://kirillfilatov.ucoz.com/2019/shower_intro.mp4"
+        type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </a>
+  </div>
+
+  <script>
+    // Принудительное воспроизведение видео
+    const video = document.getElementById('mainVideo');
+    
+    // Попытка запустить видео при загрузке
+    video.play().catch(err => {
+      console.log('Autoplay prevented:', err);
+      // Запуск при первом взаимодействии пользователя
+      document.addEventListener('click', () => {
+        video.play();
+      }, { once: true });
+    });
+
+    // Дополнительная попытка при готовности видео
+    video.addEventListener('loadeddata', () => {
+      video.play().catch(err => console.log('Play error:', err));
+    });
+
+    // Убеждаемся что видео воспроизводится
+    video.addEventListener('canplay', () => {
+      if (video.paused) {
+        video.play().catch(err => console.log('Play error:', err));
+      }
+    });
+  </script>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(d, w, c) {
+      (w[c] = w[c] || []).push(function() {
+        try {
+          w.yaCounter2150947 = new Ya.Metrika({
+            id: 2150947,
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true,
+            trackHash: true
+          });
+        } catch(e) {}
+      });
+
+      var n = d.getElementsByTagName("script")[0],
+          s = d.createElement("script"),
+          f = function() { n.parentNode.insertBefore(s, n); };
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+      if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+      } else {
+        f();
+      }
     })(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/2150947" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
-<center>
-<div style="margin:-8px"><a href="//facefilatov.kirillfilatov.com">
-<video max-width="100%" width="100%" max-height=""autoplay loop playsinline muted src="https://kirillfilatov.ucoz.com/2019/shower_intro.mp4" type="video/mp4"></a>
-</div>
-</center>
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/2150947" style="position:absolute; left:-9999px;" alt=""></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
+</body>
+</html>
