@@ -1,145 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kirill Filatov</title>
-  <meta name="description" content="Official site of Kirill Filatov">
-  <meta name="keywords" content="Кирилл Филатов Kirill Filatov Music Музыка Detskaya Детская PaperMan LL Show ЛЛ Шоу Солнечный Город facefilatov">
-  <meta name="google-site-verification" content="Eo2595TTFaW49EesLrT_aOf1nkFwcpFEnGVCOMQX5XM">
-  <link rel="icon" href="https://kirillfilatov.ucoz.com/favicon.ico" type="image/x-icon">
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Kirill Filatov</title>
+    <meta name="description" content="Official site of Kirill Filatov">
+    <meta name="keywords" content="Кирилл Филатов, Kirill Filatov, Music, Музыка, Detskaya, Детская, PaperMan, LL Show, ЛЛ Шоу, Солнечный Город, facefilatov">
+    
+    <!-- Site Verification -->
+    <meta name="google-site-verification" content="Eo2595TTFaW49EesLrT_aOf1nkFwcpFEnGVCOMQX5XM">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://kirillfilatov.ucoz.com/favicon.ico" type="image/x-icon">
+    
+    <!-- Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      background-color: #000;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      overflow-x: hidden;
-    }
+        body {
+            background-color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+        }
 
-    .video-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .video-container a {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
+        .video-link {
+            display: block;
+            width: 100%;
+            line-height: 0;
+        }
 
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+        .intro-video {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
 
-    /* Скрываем контролы видео */
-    video::-webkit-media-controls {
-      display: none !important;
-    }
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            .video-container {
+                height: auto;
+            }
+        }
+    </style>
+    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter2150947 = new Ya.Metrika({
+                        id: 2150947,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true,
+                        trackHash: true
+                    });
+                } catch(e) { }
+            });
 
-    video::-webkit-media-controls-enclosure {
-      display: none !important;
-    }
-  </style>
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function() { n.parentNode.insertBefore(s, n); };
+            
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+            
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/2150947" style="position:absolute; left:-9999px;" alt=""></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
+
 <body>
-  <div class="video-container">
-    <a href="//facefilatov.kirillfilatov.com" id="videoLink">
-      <video 
-        id="mainVideo"
-        autoplay 
-        loop 
-        muted 
-        playsinline
-        preload="auto"
-        poster=""
-        src="https://kirillfilatov.ucoz.com/2019/shower_intro.mp4">
-        Your browser does not support the video tag.
-      </video>
-    </a>
-  </div>
-
-  <script>
-    // Получаем элементы
-    const video = document.getElementById('mainVideo');
-    const videoLink = document.getElementById('videoLink');
-    
-    // Блокируем переход по ссылке при клике на видео
-    videoLink.addEventListener('click', (e) => {
-      if (video.paused) {
-        e.preventDefault(); // Отменяем переход по ссылке
-        video.play().catch(err => console.log('Play error:', err));
-      }
-      // Если видео воспроизводится, ссылка работает нормально
-    });
-    
-    // Принудительное воспроизведение видео при загрузке
-    const tryPlay = () => {
-      video.play().catch(err => {
-        console.log('Autoplay prevented:', err);
-      });
-    };
-    
-    // Множественные попытки запуска для Safari
-    video.addEventListener('loadedmetadata', tryPlay);
-    video.addEventListener('loadeddata', tryPlay);
-    video.addEventListener('canplay', tryPlay);
-    
-    // Попытка сразу после загрузки DOM
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', tryPlay);
-    } else {
-      tryPlay();
-    }
-    
-    // Дополнительная попытка через небольшую задержку для Safari
-    setTimeout(tryPlay, 100);
-    setTimeout(tryPlay, 500);
-  </script>
-
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-    (function(d, w, c) {
-      (w[c] = w[c] || []).push(function() {
-        try {
-          w.yaCounter2150947 = new Ya.Metrika({
-            id: 2150947,
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true,
-            webvisor: true,
-            trackHash: true
-          });
-        } catch(e) {}
-      });
-
-      var n = d.getElementsByTagName("script")[0],
-          s = d.createElement("script"),
-          f = function() { n.parentNode.insertBefore(s, n); };
-      s.type = "text/javascript";
-      s.async = true;
-      s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-      if (w.opera == "[object Opera]") {
-        d.addEventListener("DOMContentLoaded", f, false);
-      } else {
-        f();
-      }
-    })(document, window, "yandex_metrika_callbacks");
-  </script>
-  <noscript>
-    <div><img src="https://mc.yandex.ru/watch/2150947" style="position:absolute; left:-9999px;" alt=""></div>
-  </noscript>
-  <!-- /Yandex.Metrika counter -->
+    <main class="video-container">
+        <a href="//facefilatov.kirillfilatov.com" class="video-link" aria-label="Visit facefilatov">
+            <video 
+                class="intro-video"
+                autoplay 
+                loop 
+                playsinline 
+                muted
+                poster="https://kirillfilatov.ucoz.com/2019/shower_intro_poster.jpg"
+            >
+                <source src="https://kirillfilatov.ucoz.com/2019/shower_intro.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </a>
+    </main>
 </body>
 </html>
