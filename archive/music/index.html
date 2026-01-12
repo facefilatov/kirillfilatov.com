@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kirill Filatov Music - Albums and Top Songs">
     <title>Music - Kirill Filatov</title>
-    <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="http://kirillfilatov.ucoz.com/LL_favicon.png">
     
     <style>
         @font-face {
@@ -55,7 +55,7 @@
             font-size: 10pt;
             font-weight: 400;
             color: #fff;
-            background: #001a3b url('https://kirillfilatov.ucoz.com/6/background.png');
+            background: #28497c url('https://kirillfilatov.ucoz.com/6/background.png');
             background-attachment: fixed;
             line-height: 1.6;
         }
@@ -91,15 +91,26 @@
             color: #fff;
             text-decoration: none;
             font-weight: 400;
-            transition: opacity 0.3s;
+            font-size: 13pt;
+            padding: 5px 24px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            opacity: 0.8;
+            transition: all 0.3s;
         }
 
         nav a:hover {
-            opacity: 0.7;
+            opacity: 1;
+            background-color: #fff;
+            color: #333;
         }
 
         nav .current {
-            font-weight: 700;
+            font-weight: 400;
+            cursor: default;
+            background-color: #fff;
+            color: #333;
+            opacity: 1;
         }
 
         nav .language {
@@ -108,7 +119,7 @@
         }
 
         nav .language:hover {
-            width: 20px;
+            width: 22px;
         }
 
         .content {
@@ -175,18 +186,22 @@
 
         .album-button {
             display: inline-block;
-            padding: 4px 12px;
-            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            background: linear-gradient(to top, #414141, #555555);
             color: #fff;
             text-decoration: none;
-            border-radius: 3px;
-            font-size: 9pt;
+            border-radius: 2px 10px 10px 2px;
+            font-size: 10px;
             font-weight: 400;
             transition: background 0.3s;
         }
 
         .album-button:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to top, #555555, #414141);
+        }
+
+        .album-button:active {
+            background: linear-gradient(to top, #414141, #414141);
         }
 
         .rating-icon {
@@ -228,6 +243,27 @@
         .song-time, .song-price {
             font-size: 9pt;
             white-space: nowrap;
+        }
+
+        .song-mini-button {
+            display: inline-block;
+            padding: 3px 10px;
+            background: linear-gradient(to top, #414141, #555555);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px 10px 10px 2px;
+            font-size: 10px;
+            font-weight: 400;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .song-mini-button:hover {
+            background: linear-gradient(to top, #555555, #414141);
+        }
+
+        .song-mini-button:active {
+            background: linear-gradient(to top, #414141, #414141);
         }
 
         audio {
@@ -381,7 +417,7 @@
                             <td class="song-album">PaperMan - Single</td>
                             <td class="song-time">3:06</td>
                             <td class="song-price">$0.99</td>
-                            <td><a href="paperman_single" class="album-button">View</a></td>
+                            <td><a href="paperman_single" class="song-mini-button">View</a></td>
                         </tr>
                         <tr>
                             <td>
@@ -395,7 +431,7 @@
                             <td class="song-album">Воображаемая Любовь (Original Motion Picture Soundtrack)</td>
                             <td class="song-time">4:27</td>
                             <td class="song-price">Free</td>
-                            <td><a href="imaginary_love_ost" class="album-button">View</a></td>
+                            <td><a href="imaginary_love_ost" class="song-mini-button">View</a></td>
                         </tr>
                         <tr>
                             <td>
@@ -409,7 +445,7 @@
                             <td class="song-album">Paradise - Single</td>
                             <td class="song-time">4:51</td>
                             <td class="song-price">Free</td>
-                            <td><a href="paradise_single" class="album-button">View</a></td>
+                            <td><a href="paradise_single" class="song-mini-button">View</a></td>
                         </tr>
                         <tr>
                             <td>
@@ -423,7 +459,7 @@
                             <td class="song-album">PaperMan - Single</td>
                             <td class="song-time">3:06</td>
                             <td class="song-price">$0.99</td>
-                            <td><a href="paperman_single" class="album-button">View</a></td>
+                            <td><a href="paperman_single" class="song-mini-button">View</a></td>
                         </tr>
                         <tr>
                             <td>
@@ -437,7 +473,7 @@
                             <td class="song-album">Over My Shoulder - Single</td>
                             <td class="song-time">4:40</td>
                             <td class="song-price">$0.99</td>
-                            <td><a href="over_my_shoulder_single" class="album-button">View</a></td>
+                            <td><a href="over_my_shoulder_single" class="song-mini-button">View</a></td>
                         </tr>
                         <tr>
                             <td>
@@ -451,7 +487,7 @@
                             <td class="song-album">OMS</td>
                             <td class="song-time">2:07</td>
                             <td class="song-price">Free</td>
-                            <td><a href="oms" class="album-button">View</a></td>
+                            <td><a href="oms" class="song-mini-button">View</a></td>
                         </tr>
                         <tr>
                             <td>
@@ -465,7 +501,7 @@
                             <td class="song-album">OMS</td>
                             <td class="song-time">5:04</td>
                             <td class="song-price">Free</td>
-                            <td><a href="oms" class="album-button">View</a></td>
+                            <td><a href="oms" class="song-mini-button">View</a></td>
                         </tr>
                         <tr>
                             <td>
@@ -479,7 +515,7 @@
                             <td class="song-album">Воображаемая Любовь (Original Motion Picture Soundtrack)</td>
                             <td class="song-time">2:26</td>
                             <td class="song-price">Free</td>
-                            <td><a href="/imaginary_love_ost" class="album-button">View</a></td>
+                            <td><a href="/imaginary_love_ost" class="song-mini-button">View</a></td>
                         </tr>
                         <tr>
                             <td>
@@ -493,7 +529,7 @@
                             <td class="song-album">Звездный Час</td>
                             <td class="song-time">2:26</td>
                             <td class="song-price">Free</td>
-                            <td><a href="zvezdnyj_chas" class="album-button">View</a></td>
+                            <td><a href="zvezdnyj_chas" class="song-mini-button">View</a></td>
                         </tr>
                         <tr>
                             <td>
@@ -507,7 +543,7 @@
                             <td class="song-album">Звездный Час</td>
                             <td class="song-time">1:40</td>
                             <td class="song-price">Free</td>
-                            <td><a href="zvezdnyj_chas" class="album-button">View</a></td>
+                            <td><a href="zvezdnyj_chas" class="song-mini-button">View</a></td>
                         </tr>
                     </tbody>
                 </table>
