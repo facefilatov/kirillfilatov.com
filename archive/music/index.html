@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kirill Filatov Music - Albums and Top Songs">
+    <title>Music - Kirill Filatov</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/images/favicon.ico">
+    
+    <style>
+        @font-face {
+            font-family: 'Neo Sans Pro';
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Neo Sans Pro';
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Neo Sans Pro';
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Neo Sans Pro';
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Neo Sans Pro';
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Ultra.woff2') format('woff2');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Neo Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 10pt;
+            font-weight: 400;
+            color: #fff;
+            background: #001a3b url('https://kirillfilatov.ucoz.com/6/background.png');
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 870px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        nav .current {
+            font-weight: 700;
+        }
+
+        nav .language {
+            width: 20px;
+            transition: width 0.3s;
+        }
+
+        nav .language:hover {
+            width: 20px;
+        }
+
+        .content {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            max-width: 850px;
+            margin: 0 auto 10px;
+        }
+
+        .banner {
+            height: 250px;
+            background: url('http://kirillfilatov.ucoz.com/6/color_pp_9.jpg') 50% 0% no-repeat;
+            background-size: cover;
+            border-radius: 5px;
+            box-shadow: inset 0 0 4px black;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        h2 {
+            font-size: 15pt;
+            font-weight: 400;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        /* Albums Grid */
+        .albums-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px 15px;
+            text-align: center;
+        }
+
+        .album-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .album-cover {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid #ffffff;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .album-title {
+            font-size: 10pt;
+            font-weight: 400;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            min-height: 2.6em;
+        }
+
+        .album-button {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 9pt;
+            font-weight: 400;
+            transition: background 0.3s;
+        }
+
+        .album-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .rating-icon {
+            height: 12px;
+            vertical-align: middle;
+        }
+
+        /* Top Songs Table */
+        .songs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .songs-table th {
+            padding: 8px 10px;
+            text-align: left;
+            font-weight: 400;
+            font-size: 10pt;
+        }
+
+        .songs-table td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        .song-number {
+            width: 30px;
+            text-align: center;
+        }
+
+        .song-title {
+            font-weight: 400;
+        }
+
+        .song-album {
+            font-size: 9pt;
+        }
+
+        .song-time, .song-price {
+            font-size: 9pt;
+            white-space: nowrap;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 300px;
+            height: 30px;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                padding: 10px;
+            }
+
+            .albums-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+
+            .songs-table {
+                font-size: 9pt;
+            }
+
+            .song-album {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="//facefilatov.kirillfilatov.com">design</a></li>
+                    <li><a href="#" class="current">music</a></li>
+                    <li><a href="/video">video</a></li>
+                    <li><a href="//kirillfilatov.ru/music"><img class="language" src="http://kirillfilatov.ucoz.com/6/russian.png" alt="RU"></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="banner"></div>
+
+            <section class="section">
+                <h2>Top Albums</h2>
+                <div class="albums-grid">
+                    <article class="album-card">
+                        <a href="paradise_single"><img src="http://kirillfilatov.ucoz.com/7/Paradise-175x175-.jpg" alt="Paradise - Single" class="album-cover"></a>
+                        <div class="album-title">Paradise - Single</div>
+                        <a href="/paradise_single" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="imaginary_love_ost"><img src="http://kirillfilatov.ucoz.com/7/Imaginary-Love-Original-Motion-Picture-Soundtrack-.jpg" alt="Воображаемая Любовь OST" class="album-cover"></a>
+                        <div class="album-title">Воображаемая Любовь (Original Motion Picture Soundtrack)</div>
+                        <a href="/imaginary_love_ost" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="paperman_single"><img src="http://kirillfilatov.ucoz.com/5/PaperMan-Explicit-175x175-.jpg" alt="PaperMan - Single" class="album-cover"></a>
+                        <div class="album-title">PaperMan - <img src="http://kirillfilatov.ucoz.com/RatingE.png" alt="Explicit" class="rating-icon"> Single</div>
+                        <a href="/paperman_single" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="cry_me_a_river_single"><img src="http://kirillfilatov.ucoz.com/3/cover_6.jpg" alt="Cry Me a River - Single" class="album-cover"></a>
+                        <div class="album-title">Cry Me a River - Single</div>
+                        <a href="/cry_me_a_river_single" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="over_my_shoulder_single"><img src="http://kirillfilatov.ucoz.com/3/cover_7.jpg" alt="Over My Shoulder - Single" class="album-cover"></a>
+                        <div class="album-title">Over My Shoulder - Single</div>
+                        <a href="over_my_shoulder_single" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="oms"><img src="http://kirillfilatov.ucoz.com/4/cover_7.jpg" alt="OMS" class="album-cover"></a>
+                        <div class="album-title">OMS</div>
+                        <a href="oms" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="paperman_single_clean"><img src="http://kirillfilatov.ucoz.com/5/PaperMan-Clean-175x175-.jpg" alt="PaperMan - Single" class="album-cover"></a>
+                        <div class="album-title">PaperMan - Single</div>
+                        <a href="paperman_single_clean" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="zvezdnyj_chas"><img src="http://kirillfilatov.ucoz.com/Cover_5.jpg" alt="Звездный Час" class="album-cover"></a>
+                        <div class="album-title">Звездный Час</div>
+                        <a href="zvezdnyj_chas" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="detskaya_single"><img src="http://kirillfilatov.ucoz.com/Cover3.png" alt="Detskaya - Single" class="album-cover"></a>
+                        <div class="album-title">Detskaya - Single</div>
+                        <a href="detskaya_single" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="detskaya_the_remixes"><img src="http://kirillfilatov.ucoz.com/Cover4.jpg" alt="Detskaya (The Remixes)" class="album-cover"></a>
+                        <div class="album-title">Detskaya (The Remixes)</div>
+                        <a href="detskaya_the_remixes" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="stilyagi"><img src="http://kirillfilatov.ucoz.com/Cover2.jpg" alt="Стиляги" class="album-cover"></a>
+                        <div class="album-title">Стиляги</div>
+                        <a href="stilyagi" class="album-button">View</a>
+                    </article>
+
+                    <article class="album-card">
+                        <a href="vo_frantsuzskoy_storone_single"><img src="http://kirillfilatov.ucoz.com/cover1.jpg" alt="Vo Frantsuzskoy Storone - Single" class="album-cover"></a>
+                        <div class="album-title">Vo Frantsuzskoy Storone - Single</div>
+                        <a href="vo_frantsuzskoy_storone_single" class="album-button">View</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Top 10 Songs</h2>
+                <table class="songs-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Name</th>
+                            <th></th>
+                            <th class="song-album">Album</th>
+                            <th>Time</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1300039.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="song-number">1</td>
+                            <td class="song-title">PaperMan</td>
+                            <td><a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/parentalAdvisory?cc=ru"><img src="http://kirillfilatov.ucoz.com/explicit.png" alt="Explicit" class="rating-icon"></a></td>
+                            <td class="song-album">PaperMan - Single</td>
+                            <td class="song-time">3:06</td>
+                            <td class="song-price">$0.99</td>
+                            <td><a href="paperman_single" class="album-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1400052.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="song-number">2</td>
+                            <td class="song-title">In My Dream</td>
+                            <td></td>
+                            <td class="song-album">Воображаемая Любовь (Original Motion Picture Soundtrack)</td>
+                            <td class="song-time">4:27</td>
+                            <td class="song-price">Free</td>
+                            <td><a href="imaginary_love_ost" class="album-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1400055.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="song-number">3</td>
+                            <td class="song-title">Paradise (feat. Zhuravleva Kate)</td>
+                            <td></td>
+                            <td class="song-album">Paradise - Single</td>
+                            <td class="song-time">4:51</td>
+                            <td class="song-price">Free</td>
+                            <td><a href="paradise_single" class="album-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1300040.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="song-number">4</td>
+                            <td class="song-title">PaperMan</td>
+                            <td><a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/parentalAdvisory?cc=us"><img src="http://kirillfilatov.ucoz.com/clean_white.png" alt="Clean" class="rating-icon"></a></td>
+                            <td class="song-album">PaperMan - Single</td>
+                            <td class="song-time">3:06</td>
+                            <td class="song-price">$0.99</td>
+                            <td><a href="paperman_single" class="album-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200030.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="song-number">5</td>
+                            <td class="song-title">Over My Shoulder</td>
+                            <td></td>
+                            <td class="song-album">Over My Shoulder - Single</td>
+                            <td class="song-time">4:40</td>
+                            <td class="song-price">$0.99</td>
+                            <td><a href="over_my_shoulder_single" class="album-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1300038.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="song-number">6</td>
+                            <td class="song-title">Somebody to Love</td>
+                            <td></td>
+                            <td class="song-album">OMS</td>
+                            <td class="song-time">2:07</td>
+                            <td class="song-price">Free</td>
+                            <td><a href="oms" class="album-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1300033.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="song-number">7</td>
+                            <td class="song-title">Over My Shoulder (Acoustic Version)</td>
+                            <td></td>
+                            <td class="song-album">OMS</td>
+                            <td class="song-time">5:04</td>
+                            <td class="song-price">Free</td>
+                            <td><a href="oms" class="album-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1400053.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="song-number">8</td>
+                            <td class="song-title">Дай Шанс</td>
+                            <td></td>
+                            <td class="song-album">Воображаемая Любовь (Original Motion Picture Soundtrack)</td>
+                            <td class="song-time">2:26</td>
+                            <td class="song-price">Free</td>
+                            <td><a href="/imaginary_love_ost" class="album-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200017.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="song-number">9</td>
+                            <td class="song-title">Raise It Up</td>
+                            <td></td>
+                            <td class="song-album">Звездный Час</td>
+                            <td class="song-time">2:26</td>
+                            <td class="song-price">Free</td>
+                            <td><a href="zvezdnyj_chas" class="album-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200015.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="song-number">10</td>
+                            <td class="song-title">Звездный Джазмен (Acapella Version)</td>
+                            <td></td>
+                            <td class="song-album">Звездный Час</td>
+                            <td class="song-time">1:40</td>
+                            <td class="song-price">Free</td>
+                            <td><a href="zvezdnyj_chas" class="album-button">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-46811598-1', 'kirillfilatov.com');
+        ga('send', 'pageview');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter2150947 = new Ya.Metrika({id:2150947,
+                            webvisor:true,
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true,
+                            trackHash:true});
+                } catch(e) { }
+            });
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/2150947" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+</body>
+</html>
