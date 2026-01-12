@@ -24,39 +24,37 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             background-color: #000;
+        }
+
+        body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            overflow-x: hidden;
         }
 
         .video-container {
-            position: relative;
-            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
         }
 
         .video-link {
             display: block;
             width: 100%;
-            line-height: 0;
+            height: 100%;
         }
 
         .intro-video {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
             object-fit: cover;
-        }
-
-        /* Mobile optimization */
-        @media (max-width: 768px) {
-            .video-container {
-                height: auto;
-            }
+            display: block;
         }
     </style>
     
@@ -75,7 +73,6 @@
                     });
                 } catch(e) { }
             });
-
             var n = d.getElementsByTagName("script")[0],
                 s = d.createElement("script"),
                 f = function() { n.parentNode.insertBefore(s, n); };
@@ -106,7 +103,7 @@
                 loop 
                 playsinline 
                 muted
-                poster="https://kirillfilatov.ucoz.com/2019/shower_intro_poster.jpg"
+                poster="https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/images/Placeholder.webp"
             >
                 <source src="https://kirillfilatov.ucoz.com/2019/shower_intro.mp4" type="video/mp4">
                 Your browser does not support the video tag.
