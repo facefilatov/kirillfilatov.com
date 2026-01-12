@@ -61,46 +61,63 @@
             box-sizing: border-box;
         }
 
+        html {
+            height: 100%;
+        }
+
         body {
+            min-height: 100%;
             background-color: #000;
             background-image: url('https://kirillfilatov.ucoz.com/bg.jpg');
             background-attachment: fixed;
             background-position: center;
+            background-size: cover;
             font-family: 'Neo Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-weight: 400;
             color: #fff;
-            padding: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            min-height: 100vh;
         }
 
         .container {
+            width: 100%;
             max-width: 870px;
-            margin: 0 auto;
         }
 
         /* Navigation */
         .nav-container {
+            width: 860px;
+            max-width: 100%;
+            margin: 10px auto 0;
             background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
+            border-radius: 3px;
             padding: 5px;
-            margin-bottom: 10px;
         }
 
         nav {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
-            padding: 10px;
+            height: 26px;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 1px;
-            padding: 8px 15px;
+            font-weight: 400;
+            font-size: 11pt;
+            letter-spacing: 0px;
+            padding: 0 15px;
             transition: all 0.3s ease;
+            text-transform: uppercase;
         }
 
         nav a:hover {
@@ -112,26 +129,23 @@
         }
 
         .lang-switcher {
-            margin-left: auto;
+            margin-left: 20px;
         }
 
         .lang-switcher img {
-            width: 20px;
+            width: 15px;
             height: auto;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
+            vertical-align: middle;
         }
 
-        .lang-switcher img:hover {
-            opacity: 1;
-        }
-
-        /* Main Content */
+        /* Main Content Box */
         .content-box {
+            width: 850px;
+            max-width: 100%;
+            margin: 10px auto 0;
             background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
+            border-radius: 3px;
             padding: 10px;
-            margin-bottom: 10px;
         }
 
         /* Banner */
@@ -140,21 +154,24 @@
             height: 250px;
             background-image: url('http://kirillfilatov.ucoz.com/7/home_banner_color3.jpg');
             background-size: cover;
-            background-position: center;
-            border-radius: 5px;
-            box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+            background-position: center top;
+            border-radius: 3px;
+            box-shadow: inset 0 0 4px rgba(0, 0, 0, 1);
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
             padding: 10px;
+            overflow: hidden;
         }
 
         .social-links {
             background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            padding: 5px 10px;
-            display: flex;
-            gap: 5px;
+            border-radius: 3px;
+            padding: 0 5px;
+            display: inline-flex;
+            gap: 0;
+            height: 30px;
+            align-items: center;
         }
 
         .social-links a {
@@ -164,7 +181,7 @@
 
         .social-links img {
             height: 30px;
-            width: auto;
+            width: 30px;
             opacity: 0.8;
             transition: opacity 0.3s ease;
         }
@@ -175,64 +192,72 @@
 
         /* Content Grid */
         .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 10px;
-            margin-top: 10px;
+            display: table;
+            width: 100%;
+            margin-top: 5px;
+            border-spacing: 5px;
         }
 
         .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            display: table-cell;
+            vertical-align: top;
+            width: 540px;
+        }
+
+        .sidebar {
+            display: table-cell;
+            vertical-align: top;
+            width: 300px;
         }
 
         .video-wrapper {
             background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
+            border-radius: 3px;
             padding: 10px;
+            margin-bottom: 10px;
         }
 
         .video-wrapper iframe {
             width: 100%;
             height: 315px;
             border: none;
-            border-radius: 3px;
+            display: block;
         }
 
-        /* Sidebar */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
+        /* Sidebar Items */
         .sidebar-item {
             background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            padding: 10px;
-        }
-
-        .sidebar-item img {
-            width: 100%;
-            height: auto;
             border-radius: 3px;
+            padding: 10px;
+            margin-bottom: 10px;
         }
 
         .sidebar-item.new-single {
-            min-height: 245px;
+            height: 225px;
+        }
+
+        .sidebar-item.new-single img {
+            width: 200px;
+            height: auto;
+            float: left;
+            padding-right: 10px;
+        }
+
+        .new-single-text {
+            font-size: 14pt;
+            line-height: 1.2;
         }
 
         .sidebar-item.ll-show {
-            min-height: 120px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .sidebar-item.ll-show img {
-            width: auto;
             height: 100px;
+            width: auto;
             opacity: 0.8;
             transition: opacity 0.3s ease;
         }
@@ -241,67 +266,31 @@
             opacity: 1;
         }
 
-        .new-single-text {
-            margin-top: 10px;
-            font-size: 14pt;
-            font-weight: 500;
-        }
-
         /* Instagram Embed */
-        .instagram-embed {
-            min-height: 405px;
-        }
-
         .instagram-embed iframe {
-            width: 100%;
+            width: 290px;
+            height: 385px;
             border: none;
-            border-radius: 3px;
         }
 
         /* Responsive Design */
         @media (max-width: 900px) {
             .content-grid {
-                grid-template-columns: 1fr;
+                display: block;
             }
 
-            .banner {
-                height: 200px;
+            .main-content,
+            .sidebar {
+                display: block;
+                width: 100%;
             }
 
-            nav {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .lang-switcher {
-                margin-left: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-
-            .video-wrapper iframe {
-                height: 250px;
-            }
-
-            nav a {
-                font-size: 12px;
-                padding: 6px 10px;
+            .nav-container,
+            .content-box {
+                width: 100%;
             }
         }
     </style>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46811598-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-46811598-1');
-    </script>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -341,7 +330,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="page-wrapper">
         <!-- Navigation -->
         <div class="nav-container">
             <nav>
@@ -352,7 +341,7 @@
                 <a href="http://store.kirillfilatov.com">STORE</a>
                 <a href="about">ABOUT</a>
                 <a href="http://kirillfilatov.ru/home" class="lang-switcher">
-                    <img src="http://kirillfilatov.ucoz.com/6/russian.png" alt="Russian version">
+                    <img src="http://kirillfilatov.ucoz.com/6/russian.png" alt="RU">
                 </a>
             </nav>
         </div>
@@ -362,19 +351,19 @@
             <!-- Banner -->
             <div class="banner">
                 <div class="social-links">
-                    <a href="http://youtube.com/facefilatov" aria-label="YouTube">
+                    <a href="http://youtube.com/facefilatov">
                         <img src="http://kirillfilatov.ucoz.com/6/ico_youtube.png" alt="YouTube">
                     </a>
-                    <a href="http://facebook.com/kirillfilatov" aria-label="Facebook">
+                    <a href="http://facebook.com/kirillfilatov">
                         <img src="http://kirillfilatov.ucoz.com/6/ico_facebook.png" alt="Facebook">
                     </a>
-                    <a href="http://twitter.com/kirillfilatov" aria-label="Twitter">
+                    <a href="http://twitter.com/kirillfilatov">
                         <img src="http://kirillfilatov.ucoz.com/6/ico_twitter.png" alt="Twitter">
                     </a>
-                    <a href="http://vk.com/kirillfilatov" aria-label="VK">
+                    <a href="http://vk.com/kirillfilatov">
                         <img src="http://kirillfilatov.ucoz.com/6/ico_vk.png" alt="VK">
                     </a>
-                    <a href="http://instagram.com/kirillfilatov/" aria-label="Instagram">
+                    <a href="http://instagram.com/kirillfilatov/">
                         <img src="http://kirillfilatov.ucoz.com/6/ico_instagram.png" alt="Instagram">
                     </a>
                 </div>
@@ -388,8 +377,7 @@
                         <iframe 
                             src="https://www.youtube.com/embed/dttSGWGKLkM" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                            title="Video 1">
+                            allowfullscreen>
                         </iframe>
                     </div>
 
@@ -397,36 +385,68 @@
                         <iframe 
                             src="https://www.youtube.com/embed/Ac-mrt39E4g" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                            title="Video 2">
+                            allowfullscreen>
                         </iframe>
                     </div>
                 </div>
 
                 <!-- Sidebar -->
-                <aside class="sidebar">
+                <div class="sidebar">
                     <div class="sidebar-item new-single">
-                        <img src="http://kirillfilatov.ucoz.com/7/Paradise-175x175-.jpg" alt="Paradise Single Cover">
+                        <img src="http://kirillfilatov.ucoz.com/7/Paradise-175x175-.jpg" alt="Paradise">
                         <div class="new-single-text">New single</div>
                     </div>
 
                     <div class="sidebar-item ll-show">
                         <a href="http://kirillfilatov.com/LL">
-                            <img src="http://kirillfilatov.ucoz.com/6/LL-Show-Logo.png" alt="LL Show Logo">
+                            <img src="http://kirillfilatov.ucoz.com/6/LL-Show-Logo.png" alt="LL Show">
                         </a>
                     </div>
 
                     <div class="sidebar-item instagram-embed">
                         <iframe 
                             src="https://instagram.com/p/oxuDkWGoyP/embed/" 
-                            height="385" 
-                            scrolling="no"
-                            title="Instagram post">
+                            scrolling="no">
                         </iframe>
                     </div>
-                </aside>
+                </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+```
+
+## 2. How to Get kirillfilatov.com/archive/home.html
+
+To use your custom domain `kirillfilatov.com` instead of `facefilatov.github.io/kirillfilatov.com`:
+
+### Step 1: Add CNAME file to your repository
+Create a file named `CNAME` (no extension) in your repository root with this content:
+```
+kirillfilatov.com
+```
+
+### Step 2: Configure GitHub Pages
+1. Go to **Settings** → **Pages**
+2. Under "Custom domain", enter: `kirillfilatov.com`
+3. Click **Save**
+
+### Step 3: Update DNS Records
+In your domain registrar (where you bought kirillfilatov.com), add these DNS records:
+
+**For apex domain (kirillfilatov.com):**
+```
+Type: A
+Name: @
+Value: 185.199.108.153
+Value: 185.199.109.153
+Value: 185.199.110.153
+Value: 185.199.111.153
+```
+
+**For www subdomain (optional):**
+```
+Type: CNAME
+Name: www
+Value: facefilatov.github.io
