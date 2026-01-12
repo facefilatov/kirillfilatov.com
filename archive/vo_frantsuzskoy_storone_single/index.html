@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vo Frantsuzskoy Storone - Kirill Filatov">
+    <title>Vo Frantsuzskoy Storone - Kirill Filatov</title>
+    <link rel="icon" type="image/x-icon" href="http://kirillfilatov.ucoz.com/LL_favicon.png">
+    
+    <style>
+        @font-face {
+            font-family: 'Neo Sans Pro Regular';
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Neo Sans Pro Bold';
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Bold.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Neo Sans Pro Regular', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 10pt;
+            color: #fff;
+            background: #222222 url('https://kirillfilatov.ucoz.com/6/background.png');
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 870px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 20px 0 10px;
+        }
+
+        nav {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Neo Sans Pro Regular';
+            font-size: 13pt;
+            padding: 5px 24px;
+            margin: 15px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+
+        nav a:has(img.language) {
+            border: none;
+            padding: 0;
+            margin: 0 0 0 15px;
+            opacity: 1;
+            border-radius: 0;
+        }
+
+        nav a:has(img.language):hover {
+            background: transparent;
+            opacity: 1;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            background-color: #fff;
+            color: #333;
+        }
+
+        nav .language {
+            width: 18px;
+            margin: 2px;
+            transition: width 0.3s;
+        }
+
+        nav .language:hover {
+            width: 22px;
+        }
+
+        .content {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            max-width: 850px;
+            margin: 0 auto 10px;
+        }
+
+        .album-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+
+        .sidebar {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .album-title {
+            font-family: 'Neo Sans Pro Bold';
+            font-size: 14pt;
+            margin-bottom: 10px;
+        }
+
+        .artist-name {
+            font-family: 'Neo Sans Pro Regular';
+            margin-bottom: 15px;
+        }
+
+        .album-cover {
+            width: 170px;
+            height: 170px;
+            border: 1px solid #fff;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+            margin: 15px auto;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(to top, #666, #888);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            font-family: 'Neo Sans Pro Regular';
+            font-size: 11pt;
+            margin-top: 15px;
+            cursor: default;
+        }
+
+        .main-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .info-text {
+            font-family: 'Neo Sans Pro Bold';
+            font-size: 14pt;
+            line-height: 1.5;
+        }
+
+        .small-flag {
+            width: 10px;
+            vertical-align: middle;
+        }
+
+        .social-buttons {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .banner {
+            width: 100%;
+            height: 200px;
+            background: url('http://kirillfilatov.ucoz.com/7/color_pp_7.jpg') 0% 0% no-repeat;
+            background-size: cover;
+            box-shadow: inset 0 0 4px black;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .tracklist-section {
+            background: #f7f7f7;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .tracklist-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tracklist-table th {
+            padding: 10px;
+            text-align: left;
+            font-family: 'Neo Sans Pro Regular';
+        }
+
+        .tracklist-table td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        .track-number {
+            width: 30px;
+            text-align: center;
+        }
+
+        .mini-download-button {
+            display: inline-block;
+            padding: 3px 10px;
+            background: linear-gradient(to top, #999, #bbb);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 9pt;
+            cursor: default;
+        }
+
+        .total-songs {
+            margin-top: 15px;
+            font-family: 'Neo Sans Pro Regular';
+        }
+
+        audio {
+            width: 100%;
+            max-width: 200px;
+            height: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                padding: 10px;
+            }
+
+            .album-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .tracklist-table {
+                font-size: 9pt;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="//facefilatov.kirillfilatov.com">design</a></li>
+                    <li><a href="/music">music</a></li>
+                    <li><a href="/video">video</a></li>
+                    <li><a href="//kirillfilatov.ru/vo_frantsuzskoy_storone_single"><img class="language" src="http://kirillfilatov.ucoz.com/6/russian.png" alt="RU"></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="album-layout">
+                <aside class="sidebar">
+                    <div class="album-title">Vo Frantsuzskoy Storone</div>
+                    <div class="artist-name">Kirill Filatov</div>
+                    <img src="http://kirillfilatov.ucoz.com/cover1.jpg" alt="Vo Frantsuzskoy Storone Album Cover" class="album-cover">
+                    <span class="download-button">Sale Closed</span>
+                </aside>
+
+                <div class="main-info">
+                    <div class="info-text">
+                        Free<br>
+                        Genres: Pop<br>
+                        Released: Dec 31, 2010<br>
+                        ℗ 2011 facefilatov<br>
+                        <img src="http://kirillfilatov.ucoz.com/6/russian.png" alt="Russian" class="small-flag"> Russian Album
+                    </div>
+
+                    <div class="info-text">Ratings</div>
+
+                    <div class="social-buttons">
+                        <a href="https://twitter.com/intent/tweet?text=Vo%20Frantsuzskoy%20Storone%20by%20Kirill%20Filatov&related=KirillFilatov" target="_blank" style="color: #1da1f2; text-decoration: none;">
+                            Tweet
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner"></div>
+
+            <section class="tracklist-section">
+                <table class="tracklist-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Artist</th>
+                            <th></th>
+                            <th>Time</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <audio controls>
+                                    <source src="http://kirillfilatov.ucoz.com/Preview.mp3" type="audio/mpeg">
+                                </audio>
+                            </td>
+                            <td class="track-number">1</td>
+                            <td>Vo Frantsuzskoy Storone</td>
+                            <td>Kirill Filatov</td>
+                            <td></td>
+                            <td>2:52</td>
+                            <td>Free</td>
+                            <td><span class="mini-download-button">Sale Closed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="total-songs">Total: 1 Song</div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-46811598-1', 'kirillfilatov.com');
+        ga('send', 'pageview');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter2150947 = new Ya.Metrika({id:2150947,
+                            webvisor:true,
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true,
+                            trackHash:true});
+                } catch(e) { }
+            });
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoload", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/2150947" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+</body>
+</html>
