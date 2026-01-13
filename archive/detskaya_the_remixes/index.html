@@ -266,6 +266,8 @@
             background-repeat: repeat;
             box-shadow: inset 0 0 4px black;
             padding-top: 10px;
+            display: none;
+            transition: all 0.3s ease;
         }
 
         .obj1 img {
@@ -515,6 +517,26 @@
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-46811598-1', 'kirillfilatov.com');
         ga('send', 'pageview');
+    </script>
+
+    <!-- Show/Hide Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const showButton = document.querySelector('.showhide1');
+            const obj1 = document.querySelector('.obj1');
+            
+            if (showButton && obj1) {
+                showButton.addEventListener('click', function() {
+                    if (obj1.style.display === 'none' || obj1.style.display === '') {
+                        obj1.style.display = 'block';
+                        showButton.textContent = 'Hide';
+                    } else {
+                        obj1.style.display = 'none';
+                        showButton.textContent = 'Show';
+                    }
+                });
+            }
+        });
     </script>
 
     <!-- Yandex.Metrika counter -->
