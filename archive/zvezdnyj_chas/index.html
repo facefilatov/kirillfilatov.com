@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Стиляги - Солнечный Город">
+    <title>Стиляги - Солнечный Город</title>
+    <link rel="icon" type="image/x-icon" href="http://kirillfilatov.ucoz.com/Cover2.jpg">
+    
+    <style>
+        @font-face {
+            font-family: 'Neo Sans Pro Regular';
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Neo Sans Pro Bold';
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Bold.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            font-family: 'Neo Sans Pro Regular', 'Helvetica Neue', Arial, sans-serif;
+            color: #898989;
+            background: #ffd800 url('https://kirillfilatov.ucoz.com/6/background.png');
+            background-attachment: fixed;
+            background-position: center;
+            line-height: 1.5;
+        }
+
+        table {
+            font-size: 10pt;
+        }
+
+        .container {
+            max-width: 870px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 20px 0 10px;
+        }
+
+        nav {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Neo Sans Pro Regular';
+            font-size: 13pt;
+            padding: 5px 24px;
+            margin: 15px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+
+        nav a:has(img.language) {
+            border: none;
+            padding: 0;
+            margin: 0 0 0 15px;
+            opacity: 1;
+            border-radius: 0;
+        }
+
+        nav a:has(img.language):hover {
+            background: transparent;
+            opacity: 1;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            background-color: #fff;
+            color: #333;
+        }
+
+        nav .language {
+            width: 18px;
+            margin: 2px;
+            transition: width 0.3s;
+        }
+
+        nav .language:hover {
+            width: 22px;
+        }
+
+        .content {
+            width: 850px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px auto;
+        }
+
+        .album-layout {
+            display: table;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px 0;
+        }
+
+        .sidebar {
+            display: table-cell;
+            width: 180px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        .main-content {
+            display: table-cell;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        big_info {
+            color: white;
+            font-size: 11pt;
+            line-height: 1.5;
+        }
+
+        info {
+            text-align: left;
+            color: #898989;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+
+        notes {
+            text-align: left;
+            color: white;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+
+        .album-cover {
+            width: 170px;
+            height: 170px;
+            border: 1px solid #fff;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+            margin: 15px auto;
+        }
+
+        .small-flag {
+            width: 10px;
+            vertical-align: middle;
+        }
+
+        button_download {
+            padding: 5px 60px;
+            font-size: 14px;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 3px;
+            background: linear-gradient(to top, #f9d510, #ffdf2c);
+        }
+
+        button_download:hover {
+            background: linear-gradient(to top, #ffdf2c, #f9d510);
+        }
+
+        button_download:active {
+            background: linear-gradient(to top, #f9d510, #f9d510);
+        }
+
+        button_mini_download {
+            padding: 3px 10px;
+            font-size: 10px;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 3px 10px 10px 2px;
+            background: linear-gradient(to top, #f9d510, #ffdf2c);
+        }
+
+        button_mini_download:hover {
+            background: linear-gradient(to top, #ffdf2c, #f9d510);
+        }
+
+        button_mini_download:active {
+            background: linear-gradient(to top, #f9d510, #f9d510);
+        }
+
+        .banner-container {
+            box-shadow: inset 0 0 4px black;
+            background-color: #d0b227;
+            background-image: url('http://kirillfilatov.ucoz.com/6/background.png');
+            background-position: 0% 0%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .description-box {
+            width: 590px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .description-inner {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .description-table {
+            width: 570px;
+            border-collapse: collapse;
+        }
+
+        .description-text {
+            width: 500px;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+
+        .color-line {
+            height: 100px;
+        }
+
+        .tracklist-section {
+            background: #f7f7f7;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0 0 0;
+            color: #333;
+            text-align: center;
+        }
+
+        .tracklist-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        .tracklist-table th {
+            padding: 10px;
+            text-align: left;
+            font-family: 'Neo Sans Pro Regular';
+        }
+
+        .tracklist-table td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        .track-number {
+            width: 30px;
+            text-align: center;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 200px;
+            height: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                padding: 10px;
+            }
+
+            .tracklist-table {
+                font-size: 9pt;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="//facefilatov.kirillfilatov.com">design</a></li>
+                    <li><a href="/music">music</a></li>
+                    <li><a href="/video">video</a></li>
+                    <li><a href="//kirillfilatov.ru/stilyagi"><img class="language" src="http://kirillfilatov.ucoz.com/6/russian.png" alt="RU"></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="album-layout">
+                <aside class="sidebar">
+                    <big_info>
+                        Стиляги<br>
+                        Солнечный Город
+                    </big_info>
+                    <center>
+                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/H53vHB4MUQGw8g">
+                            <img src="http://kirillfilatov.ucoz.com/Cover2.jpg" alt="Стиляги Album Cover" class="album-cover">
+                        </a>
+                        <br>
+                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/H53vHB4MUQGw8g">
+                            <button_download>Download</button_download>
+                        </a>
+                        <br>
+                    </center>
+                    <info>
+                        <br>
+                        <big_info>Free</big_info><br>
+                        Genres: Pop<br>
+                        Released: Feb 26, 2011<br>
+                        ℗ 2011 facefilatov<br>
+                        <img src="http://kirillfilatov.ucoz.com/6/russian.png" alt="Russian" class="small-flag"> Russian Album
+                        <br><br>
+                        <big_info>Ratings</big_info><br><br>
+                        <a href="https://twitter.com/intent/tweet?text=Stilyagi%20by%20Solnechny%20Gorod&related=KirillFilatov" target="_blank" style="color: #1da1f2; text-decoration: none;">Tweet</a>
+                        <br><br>
+                    </info>
+                </aside>
+
+                <div class="main-content">
+                    <div class="banner-container">
+                        <div class="description-box">
+                            <div class="description-inner">
+                                <table class="description-table">
+                                    <tr>
+                                        <td class="description-text">
+                                            <notes>Recording of the album began in September 2010. The first three tracks were made on New Year's show and Teachers' Day. The last two tracks were recorded in the studio, as bonus tracks.</notes>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <img src="http://kirillfilatov.ucoz.com/6/color_line.png" alt="" class="color-line">
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="tracklist-section">
+                        <br>
+                        <table class="tracklist-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Artist</th>
+                                    <th></th>
+                                    <th>Time</th>
+                                    <th>Price</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/Preview_2.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">1</td>
+                                    <td>Вася</td>
+                                    <td>Солнечный Город</td>
+                                    <td></td>
+                                    <td>3:14</td>
+                                    <td>Free</td>
+                                    <td>
+                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/Zy254dvpFSHQ1A">
+                                            <button_mini_download>Download</button_mini_download>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/Preview_3.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">2</td>
+                                    <td>Наш Учитель</td>
+                                    <td>Солнечный Город</td>
+                                    <td></td>
+                                    <td>2:53</td>
+                                    <td>Free</td>
+                                    <td>
+                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/iYj16MSX-2gG8Q">
+                                            <button_mini_download>Download</button_mini_download>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/Preview_4.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">3</td>
+                                    <td>Great Ball of Fire</td>
+                                    <td>Анастасия Михайлова &<br>Кирилл Филатов</td>
+                                    <td></td>
+                                    <td>1:52</td>
+                                    <td>Free</td>
+                                    <td>
+                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/5_GX5FNJ2DIy3g">
+                                            <button_mini_download>Download</button_mini_download>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/Preview_5.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">4</td>
+                                    <td>Great Ball of Fire (Chorus Version)</td>
+                                    <td>Солнечный Город</td>
+                                    <td></td>
+                                    <td>1:49</td>
+                                    <td>Free</td>
+                                    <td>
+                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/zWmr-EJnDC-Xwg">
+                                            <button_mini_download>Download</button_mini_download>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/Preview_6.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">5</td>
+                                    <td>Great Ball of Fire (Experimental Remix)</td>
+                                    <td>Солнечный Город</td>
+                                    <td></td>
+                                    <td>2:27</td>
+                                    <td>Free</td>
+                                    <td>
+                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/bnrO3S0cgUm90Q">
+                                            <button_mini_download>Download</button_mini_download>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        Total: 5 Songs
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-46811598-1', 'kirillfilatov.com');
+        ga('send', 'pageview');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter2150947 = new Ya.Metrika({id:2150947,
+                            webvisor:true,
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true,
+                            trackHash:true});
+                } catch(e) { }
+            });
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/2150947" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+</body>
+</html>
