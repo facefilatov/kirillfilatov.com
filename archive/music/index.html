@@ -1,603 +1,703 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kirill Filatov Music - Albums and Top Songs">
-    <title>Music - Kirill Filatov</title>
-    <link rel="icon" type="image/x-icon" href="http://kirillfilatov.ucoz.com/LL_favicon.png">
-    
+<html>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
+    <title>Kirill Filatov | Music</title>
+    <meta name="Description" content="Music by Kirill Filatov">
     <style>
-        @font-face {
-            font-family: 'Neo Sans Pro';
-            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Light.woff2') format('woff2');
-            font-weight: 300;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Neo Sans Pro';
-            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Regular.woff2') format('woff2');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Neo Sans Pro';
-            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Medium.woff2') format('woff2');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Neo Sans Pro';
-            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Neo Sans Pro';
-            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Ultra.woff2') format('woff2');
-            font-weight: 900;
-            font-style: normal;
-            font-display: swap;
-        }
+    figure {
+        margin:0
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    .tmblr-iframe {
+        position:absolute
+    }
 
-        body {
-            font-family: 'Neo Sans Pro', 'Helvetica Neue', Arial, sans-serif;
-            font-size: 10pt;
-            font-weight: 400;
-            color: #fff;
-            background: #28497c url('https://kirillfilatov.ucoz.com/6/background.png');
-            background-attachment: fixed;
-            line-height: 1.6;
-        }
+    .tmblr-iframe.hide {
+        display:none
+    }
 
-        .container {
-            max-width: 870px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    .tmblr-iframe--amp-cta-button {
+        visibility: hidden;
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index:100
+    }
 
-        header {
-            padding: 20px 0;
-        }
-
-        nav {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 0;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 0;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 13pt;
-            padding: 5px 24px;
-            margin: 15px;
-            border: 1px solid #fff;
-            border-radius: 5px;
-            opacity: 0.8;
-            transition: all 0.3s;
-        }
-
-        nav a:has(img.language) {
-            border: none;
-            padding: 0;
-            margin: 0 0 0 15px;
-            opacity: 1;
-            border-radius: 0;
-        }
-
-        nav a:has(img.language):hover {
-            background: transparent;
-            opacity: 1;
-        }
-
-        nav a:hover {
-            opacity: 1;
-            background-color: #fff;
-            color: #333;
-        }
-
-        nav .current {
-            font-weight: 400;
-            cursor: default;
-            background-color: #fff;
-            color: #333;
-            opacity: 1;
-        }
-
-        nav .language {
-            width: 18px;
-            margin: 2px;
-            transition: width 0.3s;
-        }
-
-        nav .language:hover {
-            width: 22px;
-        }
-
-        .content {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            padding: 10px;
-            max-width: 850px;
-            margin: 0 auto 10px;
-        }
-
-        .banner {
-            height: 250px;
-            background: url('http://kirillfilatov.ucoz.com/6/color_pp_9.jpg') 50% 0% no-repeat;
-            background-size: cover;
-            border-radius: 5px;
-            box-shadow: inset 0 0 4px black;
-            margin-bottom: 10px;
-        }
-
-        .section {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
-        }
-
-        h2 {
-            font-size: 15pt;
-            font-weight: 400;
-            margin-bottom: 15px;
-            line-height: 1;
-        }
-
-        /* Albums Grid */
-        .albums-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 10px 15px;
-            text-align: center;
-        }
-
-        .album-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .album-cover {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border: 1px solid #ffffff;
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-            margin-bottom: 10px;
-        }
-
-        .album-title {
-            font-size: 10pt;
-            font-weight: 400;
-            margin-bottom: 10px;
-            line-height: 1.3;
-            min-height: 2.6em;
-        }
-
-        .album-button {
-            display: inline-block;
-            padding: 4px 10px;
-            background: linear-gradient(to top, #414141, #555555);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 2px 10px 10px 2px;
-            font-size: 10px;
-            font-weight: 400;
-            transition: background 0.3s;
-        }
-
-        .album-button:hover {
-            background: linear-gradient(to top, #555555, #414141);
-        }
-
-        .album-button:active {
-            background: linear-gradient(to top, #414141, #414141);
-        }
-
-        .rating-icon {
-            height: 12px;
-            vertical-align: middle;
-        }
-
-        /* Top Songs Table */
-        .songs-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .songs-table th {
-            padding: 8px 10px;
-            text-align: left;
-            font-weight: 400;
-            font-size: 10pt;
-        }
-
-        .songs-table td {
-            padding: 10px;
-            vertical-align: middle;
-        }
-
-        .song-number {
-            width: 30px;
-            text-align: center;
-        }
-
-        .song-title {
-            font-weight: 400;
-        }
-
-        .song-album {
-            font-size: 9pt;
-        }
-
-        .song-time, .song-price {
-            font-size: 9pt;
-            white-space: nowrap;
-        }
-
-        .song-mini-button {
-            display: inline-block;
-            padding: 3px 10px;
-            background: linear-gradient(to top, #414141, #555555);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 3px 10px 10px 2px;
-            font-size: 10px;
-            font-weight: 400;
-            text-align: center;
-            transition: background 0.3s;
-        }
-
-        .song-mini-button:hover {
-            background: linear-gradient(to top, #555555, #414141);
-        }
-
-        .song-mini-button:active {
-            background: linear-gradient(to top, #414141, #414141);
-        }
-
-        audio {
-            width: 100%;
-            max-width: 300px;
-            height: 30px;
-        }
-
-        audio::-webkit-media-controls-panel {
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-
-        @media (max-width: 900px) {
-            .container {
-                padding: 10px;
-            }
-
-            .albums-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
-            }
-
-            .songs-table {
-                font-size: 9pt;
-            }
-
-            .song-album {
-                display: none;
-            }
-        }
+    .tmblr-iframe--amp-cta-button.tmblr-iframe--loaded {
+        visibility: visible;
+        animation: iframe-app-cta-transition .2s ease-out
+    }
     </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="//facefilatov.kirillfilatov.com">design</a></li>
-                    <li><a href="#" class="current">music</a></li>
-                    <li><a href="/video">video</a></li>
-                    <li><a href="//kirillfilatov.ru/music"><img class="language" src="http://kirillfilatov.ucoz.com/6/russian.png" alt="RU"></a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <main class="content">
-            <div class="banner"></div>
-
-            <section class="section">
-                <h2>Top Albums</h2>
-                <div class="albums-grid">
-                    <article class="album-card">
-                        <a href="paradise_single"><img src="http://kirillfilatov.ucoz.com/7/Paradise-175x175-.jpg" alt="Paradise - Single" class="album-cover"></a>
-                        <div class="album-title">Paradise - Single</div>
-                        <a href="/paradise_single" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="imaginary_love_ost"><img src="http://kirillfilatov.ucoz.com/7/Imaginary-Love-Original-Motion-Picture-Soundtrack-.jpg" alt="Воображаемая Любовь OST" class="album-cover"></a>
-                        <div class="album-title">Воображаемая Любовь (Original Motion Picture Soundtrack)</div>
-                        <a href="/imaginary_love_ost" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="paperman_single"><img src="http://kirillfilatov.ucoz.com/5/PaperMan-Explicit-175x175-.jpg" alt="PaperMan - Single" class="album-cover"></a>
-                        <div class="album-title">PaperMan - <img src="http://kirillfilatov.ucoz.com/RatingE.png" alt="Explicit" class="rating-icon"> Single</div>
-                        <a href="/paperman_single" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="cry_me_a_river_single"><img src="http://kirillfilatov.ucoz.com/3/cover_6.jpg" alt="Cry Me a River - Single" class="album-cover"></a>
-                        <div class="album-title">Cry Me a River - Single</div>
-                        <a href="/cry_me_a_river_single" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="over_my_shoulder_single"><img src="http://kirillfilatov.ucoz.com/3/cover_7.jpg" alt="Over My Shoulder - Single" class="album-cover"></a>
-                        <div class="album-title">Over My Shoulder - Single</div>
-                        <a href="over_my_shoulder_single" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="oms"><img src="http://kirillfilatov.ucoz.com/4/cover_7.jpg" alt="OMS" class="album-cover"></a>
-                        <div class="album-title">OMS</div>
-                        <a href="oms" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="paperman_single_clean"><img src="http://kirillfilatov.ucoz.com/5/PaperMan-Clean-175x175-.jpg" alt="PaperMan - Single" class="album-cover"></a>
-                        <div class="album-title">PaperMan - Single</div>
-                        <a href="paperman_single_clean" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="zvezdnyj_chas"><img src="http://kirillfilatov.ucoz.com/Cover_5.jpg" alt="Звездный Час" class="album-cover"></a>
-                        <div class="album-title">Звездный Час</div>
-                        <a href="zvezdnyj_chas" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="detskaya_single"><img src="http://kirillfilatov.ucoz.com/Cover3.png" alt="Detskaya - Single" class="album-cover"></a>
-                        <div class="album-title">Detskaya - Single</div>
-                        <a href="detskaya_single" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="detskaya_the_remixes"><img src="http://kirillfilatov.ucoz.com/Cover4.jpg" alt="Detskaya (The Remixes)" class="album-cover"></a>
-                        <div class="album-title">Detskaya (The Remixes)</div>
-                        <a href="detskaya_the_remixes" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="stilyagi"><img src="http://kirillfilatov.ucoz.com/Cover2.jpg" alt="Стиляги" class="album-cover"></a>
-                        <div class="album-title">Стиляги</div>
-                        <a href="stilyagi" class="album-button">View</a>
-                    </article>
-
-                    <article class="album-card">
-                        <a href="vo_frantsuzskoy_storone_single"><img src="http://kirillfilatov.ucoz.com/cover1.jpg" alt="Vo Frantsuzskoy Storone - Single" class="album-cover"></a>
-                        <div class="album-title">Vo Frantsuzskoy Storone - Single</div>
-                        <a href="vo_frantsuzskoy_storone_single" class="album-button">View</a>
-                    </article>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Top 10 Songs</h2>
-                <table class="songs-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Name</th>
-                            <th></th>
-                            <th class="song-album">Album</th>
-                            <th>Time</th>
-                            <th>Price</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <audio controls>
-                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1300039.mp3" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td class="song-number">1</td>
-                            <td class="song-title">PaperMan</td>
-                            <td><a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/parentalAdvisory?cc=ru"><img src="http://kirillfilatov.ucoz.com/explicit.png" alt="Explicit" class="rating-icon"></a></td>
-                            <td class="song-album">PaperMan - Single</td>
-                            <td class="song-time">3:06</td>
-                            <td class="song-price">$0.99</td>
-                            <td><a href="paperman_single" class="song-mini-button">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <audio controls>
-                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1400052.mp3" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td class="song-number">2</td>
-                            <td class="song-title">In My Dream</td>
-                            <td></td>
-                            <td class="song-album">Воображаемая Любовь (Original Motion Picture Soundtrack)</td>
-                            <td class="song-time">4:27</td>
-                            <td class="song-price">Free</td>
-                            <td><a href="imaginary_love_ost" class="song-mini-button">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <audio controls>
-                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1400055.mp3" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td class="song-number">3</td>
-                            <td class="song-title">Paradise (feat. Zhuravleva Kate)</td>
-                            <td></td>
-                            <td class="song-album">Paradise - Single</td>
-                            <td class="song-time">4:51</td>
-                            <td class="song-price">Free</td>
-                            <td><a href="paradise_single" class="song-mini-button">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <audio controls>
-                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1300040.mp3" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td class="song-number">4</td>
-                            <td class="song-title">PaperMan</td>
-                            <td><a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/parentalAdvisory?cc=us"><img src="http://kirillfilatov.ucoz.com/clean_white.png" alt="Clean" class="rating-icon"></a></td>
-                            <td class="song-album">PaperMan - Single</td>
-                            <td class="song-time">3:06</td>
-                            <td class="song-price">$0.99</td>
-                            <td><a href="paperman_single" class="song-mini-button">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <audio controls>
-                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200030.mp3" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td class="song-number">5</td>
-                            <td class="song-title">Over My Shoulder</td>
-                            <td></td>
-                            <td class="song-album">Over My Shoulder - Single</td>
-                            <td class="song-time">4:40</td>
-                            <td class="song-price">$0.99</td>
-                            <td><a href="over_my_shoulder_single" class="song-mini-button">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <audio controls>
-                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1300038.mp3" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td class="song-number">6</td>
-                            <td class="song-title">Somebody to Love</td>
-                            <td></td>
-                            <td class="song-album">OMS</td>
-                            <td class="song-time">2:07</td>
-                            <td class="song-price">Free</td>
-                            <td><a href="oms" class="song-mini-button">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <audio controls>
-                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1300033.mp3" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td class="song-number">7</td>
-                            <td class="song-title">Over My Shoulder (Acoustic Version)</td>
-                            <td></td>
-                            <td class="song-album">OMS</td>
-                            <td class="song-time">5:04</td>
-                            <td class="song-price">Free</td>
-                            <td><a href="oms" class="song-mini-button">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <audio controls>
-                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1400053.mp3" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td class="song-number">8</td>
-                            <td class="song-title">Дай Шанс</td>
-                            <td></td>
-                            <td class="song-album">Воображаемая Любовь (Original Motion Picture Soundtrack)</td>
-                            <td class="song-time">2:26</td>
-                            <td class="song-price">Free</td>
-                            <td><a href="/imaginary_love_ost" class="song-mini-button">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <audio controls>
-                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200017.mp3" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td class="song-number">9</td>
-                            <td class="song-title">Raise It Up</td>
-                            <td></td>
-                            <td class="song-album">Звездный Час</td>
-                            <td class="song-time">2:26</td>
-                            <td class="song-price">Free</td>
-                            <td><a href="zvezdnyj_chas" class="song-mini-button">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <audio controls>
-                                    <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200015.mp3" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td class="song-number">10</td>
-                            <td class="song-title">Звездный Джазмен (Acapella Version)</td>
-                            <td></td>
-                            <td class="song-album">Звездный Час</td>
-                            <td class="song-time">1:40</td>
-                            <td class="song-price">Free</td>
-                            <td><a href="zvezdnyj_chas" class="song-mini-button">View</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </main>
-    </div>
-
-    <!-- Google Analytics -->
+    <link rel="stylesheet" media="screen" href="https://assets.tumblr.com/client/prod/standalone/blog-network-npf/index.build.css?_v=f085dde138e244526309d4673db67b4c">
+    <link rel="icon" href="http://kirillfilatov.ucoz.com/LL_favicon.png">
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-46811598-1', 'kirillfilatov.com');
-        ga('send', 'pageview');
-    </script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        },
+        i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function (d, w, c) {
-            (w[c] = w[c] || []).push(function() {
-                try {
-                    w.yaCounter2150947 = new Ya.Metrika({id:2150947,
-                            webvisor:true,
-                            clickmap:true,
-                            trackLinks:true,
-                            accurateTrackBounce:true,
-                            trackHash:true});
-                } catch(e) { }
-            });
-            var n = d.getElementsByTagName("script")[0],
-                s = d.createElement("script"),
-                f = function () { n.parentNode.insertBefore(s, n); };
-            s.type = "text/javascript";
-            s.async = true;
-            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-            if (w.opera == "[object Opera]") {
-                d.addEventListener("DOMContentLoaded", f, false);
-            } else { f(); }
-        })(document, window, "yandex_metrika_callbacks");
+    ga('create', 'UA-46811598-1', 'kirillfilatov.com');
+    ga('send', 'pageview');
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/2150947" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+    <script>
+
+    function over(el) {
+        el.width = 20;
+    }
+    ;
+
+    function out(el) {
+        el.width = 15;
+    }
+    ;
+    </script>
+    <style>
+    @font-face {
+        font-family: 'Neo Sans Pro Regular';
+        src: local("NeoSansPro-Regular");
+        src: url(https://static.tumblr.com/afp24xm/rCSpnda0b/neosanspro-regular.ttf);
+    }
+
+    @font-face {
+        font-family: 'Neo Sans Pro Bold';
+        src: local("NeoSansPro-Bold");
+        src: url(https://static.tumblr.com/afp24xm/3N0pngq50/neosanspro-bold.ttf);
+    }
+
+    a.menu {
+        color: #ffffff;
+        font-family: 'Neo Sans Pro Regular';
+        font-size: 12pt;
+        opacity: 0.8;
+        padding: 5px 24px;
+        font-size: 13pt;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 15px;
+    }
+
+    a:hover.menu {
+        color: #333333;
+        background-color: #ffffff;
+        font-family: 'Neo Sans Pro Regular';
+        opacity: 1;
+        text-decoration: none;
+    }
+
+    .current.menu {
+        cursor: default;
+        color: #333333;
+        background-color: #ffffff;
+        font-family: 'Neo Sans Pro Regular';
+        text-decoration: none;
+        opacity: 1;
+    }
+
+    img:hover.language {
+        width: 22px;
+        position: absolute;
+        margin: 0
+    }
+
+    img.language {
+        width: 18px;
+        position: absolute;
+        margin: 2;
+    }
+
+    body {
+        background-image: url(http://kirillfilatov.ucoz.com/6/background.png);
+        background-repeat: repeat;
+        background-color: #28497c;
+        background-position: center;
+        webkit-background-size: cover;
+        line-height: 1.5;
+        font-family: 'Neo Sans Pro Regular';
+        color: #ffffff;
+        font-size:;
+    }
+
+    button_view {
+        padding: 4px 10px;
+        font-size: 10px;
+        font-family: 'Neo Sans Pro';
+        color: #ffffff;
+        border-radius: 2px 10px 10px 2px;
+        background-color: #414141;
+    }
+
+    button_view:hover {
+        background-color: #202020;
+    }
+
+    button_view:active {
+        background: linear-gradient(to top, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    }
+
+    button_mini_view {
+        padding: 3px 10px;
+        font-size: 10px;
+        font-family: 'Neo Sans Pro Regular';
+        color: #ffffff;
+        text-align: center;
+        border-radius: 3px 10px 10px 2px;
+        background: -moz-linear-gradient(to top, #414141, #555555);
+        background: linear-gradient(to top, #414141, #555555);
+    }
+
+    button_mini_view:hover {
+        background: -moz-linear-gradient(to top, #555555, #414141);
+        background: linear-gradient(to top, #555555, #414141);
+    }
+
+    button_mini_view:active {
+        background: -moz-linear-gradient(to top, #414141, #414141);
+        background: linear-gradient(to top, #414141, #414141);
+    }
+    </style>
+    <script defer type="application/javascript" id="bilmur" data-provider="tumblr.com" data-service="blognetwork" data-customproperties='{"theme": ""}' nonce="cfhY1pXRy92KWYNLsMCFYfxCEA" src="https://s0.wp.com/wp-content/js/bilmur.min.js?m=202603"></script>
+    <script src="https://assets.tumblr.com/assets/scripts/tumblelog_post_message_queue.js?_v=a8fadfa499d8cb7c3f8eefdf0b1adfdd"></script>
+    <link rel="stylesheet" type="text/css" href="https://assets.tumblr.com/fonts/avalon/stylesheet.css?v=1">
+    <!-- BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS -->
+    <!-- If you'd like to specify your own Open Graph tags, define the og:url and og:title tags in your theme's HTML. -->
+    <!-- Read more: http://ogp.me/ -->
+    <meta property="fb:app_id" content="48119224995"/>
+    <meta property="og:site_name" content="Tumblr"/>
+    <meta property="og:title" content="Tumblr"/>
+    <meta property="og:url" content="https://kirillfilatov.tumblr.com/music"/>
+    <meta property="og:type" content="article"/>
+    <meta property="al:ios:url" content="tumblr://x-callback-url/blog?blogName=kirillfilatov&amp;postID="/>
+    <meta property="al:ios:app_name" content="Tumblr"/>
+    <meta property="al:ios:app_store_id" content="305343404"/>
+    <meta property="al:android:url" content="tumblr://x-callback-url/blog?blogName=kirillfilatov&amp;postID="/>
+    <meta property="al:android:app_name" content="Tumblr"/>
+    <meta property="al:android:package" content="com.tumblr"/>
+    <!-- END TUMBLR FACEBOOK OPENGRAPH TAGS -->
+    <!-- TWITTER TAGS -->
+    <meta charset="utf-8">
+    <meta name="twitter:site" content="tumblr"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:description" content=""/>
+    <meta name="twitter:title" content="kirillfilatov.com"/>
+    <meta name="twitter:app:name:iphone" content="Tumblr"/>
+    <meta name="twitter:app:name:ipad" content="Tumblr"/>
+    <meta name="twitter:app:name:googleplay" content="Tumblr"/>
+    <meta name="twitter:app:id:iphone" content="305343404"/>
+    <meta name="twitter:app:id:ipad" content="305343404"/>
+    <meta name="twitter:app:id:googleplay" content="com.tumblr"/>
+    <meta name="twitter:app:url:iphone" content="tumblr://x-callback-url/blog?blogName=kirillfilatov&amp;referrer=twitter-cards"/>
+    <meta name="twitter:app:url:ipad" content="tumblr://x-callback-url/blog?blogName=kirillfilatov&amp;referrer=twitter-cards"/>
+    <meta name="twitter:app:url:googleplay" content="tumblr://x-callback-url/blog?blogName=kirillfilatov&amp;referrer=twitter-cards"/>
+    <link rel="canonical" href="https://kirillfilatov.tumblr.com/music"/>
+</head>
+<center>
+    <div style="padding-top: 20px;padding-bottom: 20px;">
+        <a class="menu" href="//facefilatov.kirillfilatov.com">design</a>
+        <a class="current menu">music</a>
+        <a class="menu" href="/video">video</a>
+        <a href="//kirillfilatov.ru/music">
+            <img class="language" src="http://kirillfilatov.ucoz.com/6/russian.png">
+        </a>
+    </div>
+</center>
+<center>
+    <div style="width:850px; height:; margin: 10px 0px 0px 0px;padding: 10px;background-color: rgba(0, 0, 0, 0.3);z-index: 0;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;zoom: 1">
+        <table style="text-align: center; width: 100%; height: 250px; box-shadow: black 0px 0px 4px 0px inset; border-collapse: collapse; overflow: hidden; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;" width="" align="">
+            <tbody>
+                <tr>
+                    <td style="letter-spacing: 0px; word-spacing: 0px; box-shadow: black 0px 0px 4px 0px inset; text-align: center; vertical-align: bottom; background-image: url(http://kirillfilatov.ucoz.com/6/color_pp_9.jpg); background-position: 50% 0%;"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="width:;margin: 10px 0px 0px 0px;padding: 10px;background-color: rgba(0, 0, 0, 0.3);z-index: 0;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;zoom: 1">
+            <div style="text-align: left; font-size:15pt;line-height: 1;">Top Albums</div>
+            <table table="" style="border-collapse: collapse; font-size: 10pt; margin-right: 100px; margin-left: 0px;" width="" align="center" cellspacing="10" cellpadding="15">
+                <tbody>
+                    <tr>
+                        <td style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="paradise_single">
+                                <img src="http://kirillfilatov.ucoz.com/7/Paradise-175x175-.jpg" height="100pxpxpx" width="100pxpxpx" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);" alt=""/>
+                            </a>
+                            <br/>
+                            <br/>
+                            Paradise - Single
+                            <br/>
+                            <br/>
+                            <a href="/paradise_single">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                        <td style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="imaginary_love_ost">
+                                <img src="http://kirillfilatov.ucoz.com/7/Imaginary-Love-Original-Motion-Picture-Soundtrack-.jpg" height="100pxpxpx" width="100pxpxpx" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);" alt=""/>
+                            </a>
+                            <br/>
+                            <br/>
+                            Воображаемая Любовь (Original Motion Picture Soundtrack)
+                            <br/>
+                            <br/>
+                            <a href="/imaginary_love_ost">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                        <td style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="paperman_single" style="font-family: 'Neo Sans Pro Bold'; font-size: 14pt;">
+                                <img src="http://kirillfilatov.ucoz.com/5/PaperMan-Explicit-175x175-.jpg" height="100pxpx" width="100pxpx" alt="" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);"/>
+                            </a>
+                            <br/>
+                            <br/>
+                            PaperMan -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <img src="http://kirillfilatov.ucoz.com/RatingE.png" alt=""/>
+                             Single
+                            <br/>
+                            <br/>
+                            <a href="/paperman_single">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                        <td style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="cry_me_a_river_single">
+                                <img src="http://kirillfilatov.ucoz.com/3/cover_6.jpg" height="100pxpx" width="100pxpx" alt="" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);"/>
+                            </a>
+                            <br/>
+                            <br/>
+                            Cry Me a River - Single
+                            <br/>
+                            <br/>
+                            <a href="/cry_me_a_river_single">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                        <td style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="over_my_shoulder_single">
+                                <img src="http://kirillfilatov.ucoz.com/3/cover_7.jpg" height="100pxpx" width="100pxpx" alt="" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);"/>
+                            </a>
+                            <br/>
+                            <br/>
+                            Over My Shoulder - Single
+                            <br/>
+                            <br/>
+                            <a href="over_my_shoulder_single">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                        <td colspan="1" style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="oms">
+                                <img src="http://kirillfilatov.ucoz.com/4/cover_7.jpg" height="100pxpx" width="100pxpx" alt="" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);"/>
+                            </a>
+                            <br/>
+                            <br/>
+                            OMS
+                            <br/>
+                            <br/>
+                            <a href="oms">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="paperman_single_clean" style="font-family: 'Neo Sans Pro Bold'; font-size: 14pt;">
+                                <img src="http://kirillfilatov.ucoz.com/5/PaperMan-Clean-175x175-.jpg" height="100pxpx" width="100pxpx" alt="" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);"/>
+                            </a>
+                            <br/>
+                            <br/>
+                            PaperMan - Single
+                            <br/>
+                            <br/>
+                            <a href="paperman_single_clean">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                        <td style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="zvezdnyj_chas">
+                                <img src="http://kirillfilatov.ucoz.com/Cover_5.jpg" height="100pxpx" width="100pxpx" alt="" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);"/>
+                            </a>
+                            <br/>
+                            <br/>
+                            Звездный Час
+                            <br/>
+                            <br/>
+                            <a href="zvezdnyj_chas">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                        <td colspan="1" style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="detskaya_single">
+                                <img src="http://kirillfilatov.ucoz.com/Cover3.png" height="100pxpx" width="100pxpx" alt="" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);"/>
+                            </a>
+                            <br/>
+                            <br/>
+                            Detskaya - Single
+                            <br/>
+                            <br/>
+                            <a href="detskaya_single">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                        <td colspan="1" style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="detskaya_the_remixes">
+                                <img src="http://kirillfilatov.ucoz.com/Cover4.jpg" height="100pxpx" width="100pxpx" alt="" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);"/>
+                            </a>
+                            <br/>
+                            <br/>
+                            Detskaya (The Remixes)
+                            <br/>
+                            <br/>
+                            <a href="detskaya_the_remixes">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                        <td colspan="1" style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+                            <a href="stilyagi">
+                                <img src="http://kirillfilatov.ucoz.com/Cover2.jpg" height="100pxpx" width="100pxpx" alt="" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);"/>
+                            </a>
+                            <br/>
+                            <br/>
+                            Стиляги
+                            <br/>
+                            <br/>
+                            <a href="stilyagi">
+                                <button_view>View</button_view>
+                            </a>
+                        </td>
+                        <td rowspan="1" style="width: 100px; letter-spacing: 0px; word-spacing: 0px; vertical-align: top;">
+
+                            <a href="vo_frantsuzskoy_storone_single">
+                                <img src="http://kirillfilatov.ucoz.com/cover1.jpg" height="100pxpx" width="100pxpx" alt="" style="-webkit-box-shadow: rgba(0, 0, 0, 0.294118) 0px 3px 5px; border: 1px solid rgb(255, 255, 255);"/>
+                            </a>
+                            <br/>
+                            <br/>
+                            Vo Frantsuzskoy Storone - Single
+                            <br/>
+                            <br/>
+                            <a href="vo_frantsuzskoy_storone_single">
+                                <button_view>View</button_view>
+                            </a>
+                            <br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="text-align: left; margin: 10px 0px 0px; padding: 10px; background-color: rgba(0, 0, 0, 0.298039); z-index: 0; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; zoom: 1;font-size:15pt;line-height: 1;">
+            Top 10 Songs
+            <table style="font-size: 10pt;width: 100%;">
+                <tbody></tbody>
+                <tbody>
+                    <tr>
+                        <td>
+                            <br/>
+                        </td>
+                        <td>
+                            <br/>
+                        </td>
+                        <td>Name</td>
+                        <td>
+                            <br/>
+                        </td>
+                        <td>Album</td>
+                        <td>Time</td>
+                        <td>Price</td>
+                        <td>
+                            <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="">
+                            <script src="http://forum.ucoz.ru/media/?auto=0;small=1;color=white;textoff=0;t=audio;f=http://kirillfilatov.ucoz.com/audio/RUFFR1300039.mp3" type="text/javascript"></script>
+                        </td>
+                        <td colspan="1" style="">1</td>
+                        <td colspan="1" style="">PaperMan</td>
+                        <td colspan="1" style="">
+                            <a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/parentalAdvisory?cc=ru">
+                                <img src="http://kirillfilatov.ucoz.com/explicit.png" alt=""/>
+                            </a>
+                            <br/>
+                        </td>
+                        <td colspan="1" style="">PaperMan - Single</td>
+                        <td colspan="1" style="">3:06</td>
+                        <td colspan="1" style="">$0.99</td>
+                        <td colspan="1" style="">
+                            <a href="paperman_single">
+                                <button_mini_view>View</button_mini_view>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="">
+                            <script src="http://forum.ucoz.ru/media/?auto=0;small=1;color=white;textoff=0;t=audio;f=http://kirillfilatov.ucoz.com/audio/RUFFR1400052.mp3" type="text/javascript"></script>
+                        </td>
+                        <td colspan="1" style="">2</td>
+                        <td colspan="1" style="">In My Dream</td>
+                        <td colspan="1" style="">
+                            <br/>
+                        </td>
+                        <td colspan="1" style="">Воображаемая Любовь (Original Motion Picture Soundtrack)</td>
+                        <td colspan="1" style="">4:27</td>
+                        <td colspan="1" style="">Free</td>
+                        <td colspan="1" style="">
+                            <a href="imaginary_love_ost">
+                                <button_mini_view>View</button_mini_view>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="">
+                            <script src="http://forum.ucoz.ru/media/?auto=0;small=1;color=white;textoff=0;t=audio;f=http://kirillfilatov.ucoz.com/audio/RUFFR1400055.mp3" type="text/javascript"></script>
+                        </td>
+                        <td colspan="1" style="">3</td>
+                        <td colspan="1" style="">Paradise (feat. Zhuravleva Kate)</td>
+                        <td colspan="1" style="">
+                            <br/>
+                        </td>
+                        <td colspan="1" style="">Paradise - Single</td>
+                        <td colspan="1" style="">4:51</td>
+                        <td colspan="1" style="">Free</td>
+                        <td colspan="1" style="">
+                            <a href="paradise_single">
+                                <button_mini_view>View</button_mini_view>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="">
+                            <script src="http://forum.ucoz.ru/media/?auto=0;small=1;color=white;textoff=0;t=audio;f=http://kirillfilatov.ucoz.com/audio/RUFFR1300040.mp3" type="text/javascript"></script>
+                        </td>
+                        <td colspan="1" style="">4</td>
+                        <td colspan="1" style="">PaperMan</td>
+                        <td colspan="1" style="">
+                            <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/parentalAdvisory?cc=us">
+                                <img src="http://kirillfilatov.ucoz.com/clean_white.png" alt=""/>
+                            </a>
+                        </td>
+                        <td colspan="1" style="">PaperMan - Single</td>
+                        <td colspan="1" style="">3:06</td>
+                        <td colspan="1" style="">$0.99</td>
+                        <td colspan="1" style="">
+                            <a href="paperman_single">
+                                <button_mini_view>View</button_mini_view>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="">
+                            <script src="http://forum.ucoz.ru/media/?auto=0;small=1;color=white;textoff=0;t=audio;f=http://kirillfilatov.ucoz.com/audio/RUFFR1200030.mp3" type="text/javascript"></script>
+                        </td>
+                        <td colspan="1" style="">5</td>
+                        <td colspan="1" style="">Over My Shoulder</td>
+                        <td colspan="1" style="">
+                            <br/>
+                        </td>
+                        <td colspan="1" style="">Over My Shoulder - Single</td>
+                        <td colspan="1" style="">4:40</td>
+                        <td colspan="1" style="">$0.99</td>
+                        <td colspan="1" style="">
+                            <a href="over_my_shoulder_single">
+                                <button_mini_view>View</button_mini_view>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="">
+                            <script src="http://forum.ucoz.ru/media/?auto=0;small=1;color=white;textoff=0;t=audio;f=http://kirillfilatov.ucoz.com/audio/RUFFR1300038.mp3" type="text/javascript"></script>
+                        </td>
+                        <td colspan="1" style="">6</td>
+                        <td colspan="1" style="">Somebody to Love</td>
+                        <td colspan="1" style="">
+                            <br/>
+                        </td>
+                        <td colspan="1" style="">OMS</td>
+                        <td colspan="1" style="">2:07</td>
+                        <td colspan="1" style="">Free</td>
+                        <td colspan="1" style="">
+                            <a href="oms">
+                                <button_mini_view>View</button_mini_view>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="">
+                            <script src="http://forum.ucoz.ru/media/?auto=0;small=1;color=white;textoff=0;t=audio;f=http://kirillfilatov.ucoz.com/audio/RUFFR1300033.mp3" type="text/javascript"></script>
+                        </td>
+                        <td colspan="1" style="">7</td>
+                        <td colspan="1" style="">Over My Shoulder (Acoustic Version)</td>
+                        <td colspan="1" style="">
+                            <br/>
+                        </td>
+                        <td colspan="1" style="">OMS</td>
+                        <td colspan="1" style="">5:04</td>
+                        <td colspan="1" style="">Free</td>
+                        <td colspan="1" style="">
+                            <a href="oms">
+                                <button_mini_view>View</button_mini_view>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="">
+                            <script src="http://forum.ucoz.ru/media/?auto=0;small=1;color=white;textoff=0;t=audio;f=http://kirillfilatov.ucoz.com/audio/RUFFR1400053.mp3" type="text/javascript"></script>
+                        </td>
+                        <td colspan="1" style="">8</td>
+                        <td colspan="1" style="">Дай Шанс</td>
+                        <td colspan="1" style="">
+                            <br/>
+                        </td>
+                        <td colspan="1" style="">Воображаемая Любовь (Original Motion Picture Soundtrack)</td>
+                        <td colspan="1" style="">2:26</td>
+                        <td colspan="1" style="">Free</td>
+                        <td colspan="1" style="">
+                            <a href="/imaginary_love_ost">
+                                <button_mini_view>View</button_mini_view>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="">
+                            <script src="http://forum.ucoz.ru/media/?auto=0;small=1;color=white;textoff=0;t=audio;f=http://kirillfilatov.ucoz.com/audio/RUFFR1200017.mp3" type="text/javascript"></script>
+                        </td>
+                        <td colspan="1" style="">9</td>
+                        <td colspan="1" style="">Raise It Up</td>
+                        <td colspan="1" style="">
+                            <br/>
+                        </td>
+                        <td colspan="1" style="">Звездный Час</td>
+                        <td colspan="1" style="">2:26</td>
+                        <td colspan="1" style="">Free</td>
+                        <td colspan="1" style="">
+                            <a href="zvezdnyj_chas">
+                                <button_mini_view>View</button_mini_view>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="">
+                            <script src="http://forum.ucoz.ru/media/?auto=0;small=1;color=white;textoff=0;t=audio;f=http://kirillfilatov.ucoz.com/audio/RUFFR1200015.mp3" type="text/javascript"></script>
+                        </td>
+                        <td colspan="1" style="">10</td>
+                        <td colspan="1" style="">Звездный Джазмен (Acapella Version)</td>
+                        <td colspan="1" style="">
+                            <br/>
+                        </td>
+                        <td colspan="1" style="">Звездный Час</td>
+                        <td colspan="1" style="">1:40</td>
+                        <td colspan="1" style="">Free</td>
+                        <td colspan="1" style="">
+                            <a href="zvezdnyj_chas">
+                                <button_mini_view>View</button_mini_view>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</center>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter2150947 = new Ya.Metrika({
+                id: 2150947,
+                webvisor: true,
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+                trackHash: true
+            });
+        } catch (e) {}
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function() {
+            n.parentNode.insertBefore(s, n);
+        };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else {
+        f();
+    }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>
+    <div>
+        <img src="//mc.yandex.ru/watch/2150947" style="position:absolute; left:-9999px;" alt=""/>
+    </div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+<iframe scrolling="no" width="1" height="1" frameborder="0" style="background-color:transparent; overflow:hidden; position:absolute; top:0; left:0; z-index:9999;" id="ga_target"></iframe>
+<script type="text/javascript">
+(function() {
+    var analytics_frame = document.getElementById('ga_target');
+    var analytics_iframe_loaded;
+    var user_logged_in;
+    var blog_is_nsfw = 'No';
+
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(messageEvent, function(e) {
+        var message = (e.data && e.data.split) ? e.data.split(';') : '';
+        switch (message[0]) {
+        case 'analytics_iframe_loaded':
+            analytics_iframe_loaded = true;
+            postCSMessage();
+            postGAMessage();
+            break;
+        case 'user_logged_in':
+            user_logged_in = message[1];
+            postGAMessage();
+            break;
+        }
+    }, false);
+
+    analytics_frame.src = "https://assets.tumblr.com/analytics.html?_v=9f5febfd57a8a649c598d888f2d9e062#" +
+    "https://kirillfilatov.tumblr.com";
+    function postGAMessage() {
+        if (analytics_iframe_loaded && user_logged_in) {
+            var is_ajax = false;
+            analytics_frame.contentWindow.postMessage(['tick_google_analytics', is_ajax, user_logged_in, blog_is_nsfw, '/music?route=custom_page'].join(';'), analytics_frame.src.split('/analytics.html')[0]);
+        }
+    }
+    function postCSMessage() {
+        COMSCORE = true;
+        analytics_frame.contentWindow.postMessage('enable_comscore;' + window.location, analytics_frame.src.split('/analytics.html')[0]);
+    }
+})();
+</script>
+<script type="text/javascript" nonce="cfhY1pXRy92KWYNLsMCFYfxCEA">
+!function(s) {
+    s.src = 'https://px.srvcs.tumblr.com/impixu?T=1768265949&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDovL2tpcmlsbGZpbGF0b3YudHVtYmxyLmNvbS9tdXNpYyIsInJlcXR5cGUiOjAsInJvdXRlIjoiY3VzdG9tX3BhZ2UifQ==&U=MLKEMCDFOP&K=4130da9fc0cb290197b401ba98684cb8be8af4e100e7fb55c04c7aae9ca94970&R=https%3A%2F%2Fkirillfilatov.tumblr.com%2Fhome'.replace(/&R=[^&$]*/, '').concat('&R=' + escape(document.referrer)).slice(0, 2000).replace(/%.?.?$/, '');
+}(new Image());
+</script>
+<noscript>
+    <img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1768265949&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDovL2tpcmlsbGZpbGF0b3YudHVtYmxyLmNvbS9tdXNpYyIsInJlcXR5cGUiOjAsInJvdXRlIjoiY3VzdG9tX3BhZ2UiLCJub3NjcmlwdCI6MX0=&U=MLKEMCDFOP&K=9edfc7ccc54149fe8817440c20bb60efc46eb0de6634871bd8740205901b501b&R=https%3A%2F%2Fkirillfilatov.tumblr.com%2Fhome">
+</noscript>
+<iframe id="blue-space-api-calls-iframe" src="https://www.tumblr.com/dashboard/iframe/monetization?tumblelog=kirillfilatov&src=https%3A%2F%2Fkirillfilatov.tumblr.com%2Fmusic" style="display: none;" sandbox="allow-scripts allow-same-origin"></iframe>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" crossorigin="anonymous" nonce="cfhY1pXRy92KWYNLsMCFYfxCEA"></script>
+<!--
+Open GAM console on the page:
+1. Open browser JS console
+2. Run `googletag.openConsole()`
+3. GAM debug UI should appear and tell some more info on the ad itself and its fulfillment status
+-->
+<noscript id="bootloader" data-bootstrap="{&quot;Components&quot;:{&quot;PostActivity&quot;:[],&quot;NotificationPoller&quot;:{&quot;messaging_keys&quot;:[],&quot;token&quot;:&quot;&quot;,&quot;inbox_unread&quot;:0},&quot;DesktopDashboardLogo&quot;:{&quot;animations&quot;:[[&quot;https:\/\/assets.tumblr.com\/images\/logo\/hover-animations\/1.png?_v=161861acded461bb6e995593a3bae835&quot;,&quot;https:\/\/assets.tumblr.com\/images\/logo\/hover-animations\/1@2x.png?_v=496a774637302a598c851381d00009b0&quot;]]},&quot;Monetization&quot;:{&quot;client_side_waterfall&quot;:false,&quot;no_demand_reason&quot;:null},&quot;TumblelogIframe&quot;:{&quot;variant&quot;:null,&quot;isCompact&quot;:true,&quot;tumblelogBundleSrc&quot;:&quot;https:\/\/assets.tumblr.com\/client\/prod\/standalone\/tumblelog\/index.build.js?_v=4a1639e90881218a9d0826bd29b5b53a&quot;,&quot;tumblelogName&quot;:&quot;kirillfilatov&quot;,&quot;isLoggedIn&quot;:false,&quot;isFriend&quot;:false,&quot;formKey&quot;:&quot;&quot;,&quot;canSubscribe&quot;:false,&quot;isSubscribed&quot;:false,&quot;tumblelogTitle&quot;:&quot;kirillfilatov.com&quot;,&quot;tumblelogAvatar&quot;:&quot;https:\/\/64.media.tumblr.com\/avatar_dc08d105401e_64.pnj&quot;,&quot;tumblelogAvatar128&quot;:&quot;https:\/\/64.media.tumblr.com\/avatar_dc08d105401e_128.pnj&quot;,&quot;tumblelogHost&quot;:&quot;https:\/\/kirillfilatov.tumblr.com&quot;,&quot;hasCustomDomain&quot;:false,&quot;isOptica&quot;:false,&quot;isCustomTheme&quot;:true,&quot;themeHeaderImage&quot;:&quot;&quot;,&quot;themeBackgroundColor&quot;:&quot;#000000&quot;,&quot;themeTitleColor&quot;:&quot;#FFFFFF&quot;,&quot;themeAccentColor&quot;:&quot;#529ECC&quot;,&quot;brag&quot;:false,&quot;canShowAd&quot;:false,&quot;isPremium&quot;:false,&quot;geminiSectionCodeDesktop&quot;:&quot;a10bca9c-0c5d-4a02-ab13-14ab8513d81d&quot;,&quot;geminiSectionCodeMobile&quot;:&quot;ced63809-b609-4aca-96a0-abc099acba6b&quot;,&quot;currentPageType&quot;:null,&quot;currentPage&quot;:false,&quot;searchQuery&quot;:&quot;&quot;,&quot;tag&quot;:&quot;&quot;,&quot;query&quot;:&quot;&quot;,&quot;chrono&quot;:false,&quot;postId&quot;:&quot;&quot;,&quot;src&quot;:&quot;https:\/\/kirillfilatov.tumblr.com\/music&quot;,&quot;postUrl&quot;:&quot;&quot;,&quot;openInPeeprUrl&quot;:&quot;https:\/\/www.tumblr.com\/kirillfilatov&quot;,&quot;isBlocked&quot;:null,&quot;isAdmin&quot;:false,&quot;lookupButtonUrl&quot;:&quot;&quot;,&quot;showSpamButton&quot;:false,&quot;showRootPostButton&quot;:false,&quot;rootPostUrl&quot;:&quot;&quot;,&quot;showRadarPostButton&quot;:false,&quot;radarKeys&quot;:&quot;&quot;,&quot;isUniblocked&quot;:false,&quot;isNsfw&quot;:false,&quot;isAdult&quot;:false,&quot;isSpam&quot;:false,&quot;isPrimaryBlog&quot;:false,&quot;canEdit&quot;:false,&quot;showRemoveAdsCta&quot;:false,&quot;canReblogSelf&quot;:false,&quot;showLikeButton&quot;:false,&quot;showReblogButton&quot;:false,&quot;reblogUrl&quot;:&quot;&quot;,&quot;showMessagingButton&quot;:false,&quot;loginCheckIframeSrc&quot;:&quot;https:\/\/assets.tumblr.com\/assets\/html\/iframe\/login_check.html?_v=3de94a184d600617102ddd5b48fb36e9&quot;,&quot;appInstallUrls&quot;:{&quot;android&quot;:&quot;https:\/\/play.google.com\/store\/apps\/details?id=com.tumblr\u0026referrer=utm_source%3Dtumblr%26utm_medium%3Diframe%26utm_campaign%3Dbn_continue_or_install_cta&quot;,&quot;ios&quot;:&quot;https:\/\/apps.apple.com\/app\/apple-store\/id305343404?pt=212308\u0026ct=bn_continue_or_install_cta\u0026mt=8&quot;},&quot;appOpenReferrer&quot;:&quot;bn_header_open_btn&quot;,&quot;isShowSearch&quot;:true,&quot;supplyLogging&quot;:[],&quot;secondsSinceLastActivity&quot;:14399,&quot;installUrlOpenFailed&quot;:{&quot;android&quot;:&quot;https:\/\/play.google.com\/store\/apps\/details?id=com.tumblr\u0026referrer=utm_source%3Dtumblr%26utm_medium%3Diframe%26utm_campaign%3Dbn_header_app_open_failed&quot;,&quot;ios&quot;:&quot;https:\/\/apps.apple.com\/app\/apple-store\/id305343404?pt=212308\u0026ct=bn_header_app_open_failed\u0026mt=8&quot;},&quot;loginWallVariant&quot;:&quot;small_center&quot;},&quot;CommunityLabels&quot;:{&quot;has_community_label&quot;:false,&quot;is_single&quot;:true,&quot;redirect_target&quot;:null}},&quot;Flags&quot;:{&quot;features&quot;:&quot;eyJmaWx0ZXJfbnNmdyI6dHJ1ZSwibW9iaWxlX3dlYl9nYXRlIjp0cnVlLCJzYWZlX21vZGUiOnRydWUsInNhZmVfbW9kZV9lbmFibGVkIjp0cnVlLCJrZXljb21tYW5kX2F1dG9fcGFnaW5hdGUiOnRydWUsImxvZ2dlZF9vdXRfc2VhcmNoIjp0cnVlLCJrcmFrZW5fd2ViX2xvZ2dpbmdfbGlicmFyeSI6dHJ1ZSwibGl2ZXBob3Rvc193ZWIiOnRydWUsInVzZXJfdGFnX2ZpbHRlcmluZyI6dHJ1ZSwic2FmZV9tb2RlX293bl9wb3N0Ijp0cnVlLCJwcm9qZWN0X3hfYXBwZWFsIjp0cnVlLCJtb2JpbGVfd2ViX3Bob3Rvc2V0cyI6dHJ1ZSwiaGlkZV9kZWZhdWx0X2hlYWRlcnNfYmxvZ19jYXJkcyI6dHJ1ZSwibm90aWZpY2F0aW9uX3JlcGx5X2xpbmtfdG9fbm90ZXMiOnRydWUsInR5cGluZ19pbmRpY2F0b3Jfd3JpdGUiOnRydWUsInR1bWJscl92aWRlb19zcG9uc29yZWRfZGF5Ijp0cnVlLCJjYXB0Y2hhOnVzZV9yZWNhcHRjaGEyIjp0cnVlLCJsaXR0bGVfc2lzdGVyIjp0cnVlLCJsb2dfbGFkeSI6dHJ1ZSwicmVkcG9wX3Bvc3RfZm9ybV9tb2JpbGVfY3JlYXRlIjp0cnVlLCJsZWdhY3lfcG9zdF9mb3JtX2J1dHRvbnNfbGlua190b19yZWRwb3AiOnRydWUsInNob3dfdHNwX2NsaWNrX3Rocm91Z2hfdG9nZ2xlIjp0cnVlLCJkYXJsYV9hZF9mZWVkYmFjayI6dHJ1ZSwic3RhdHVzX2luZGljYXRvciI6dHJ1ZSwiY29udmVyc2F0aW9uYWxfbm90aWZpY2F0aW9ucyI6dHJ1ZSwiZGlzYWJsZV95YWhvb19iX2Nvb2tpZSI6dHJ1ZSwibGl2ZXBob3RvcyI6dHJ1ZSwiY29tbXVuaXR5X2xhYmVscyI6dHJ1ZSwibW9uZXRpemF0aW9uIjp0cnVlfQ==&quot;},&quot;Context&quot;:{&quot;name&quot;:&quot;default&quot;,&quot;time&quot;:1768265949000,&quot;userinfo&quot;:{&quot;primary&quot;:&quot;&quot;,&quot;name&quot;:&quot;&quot;,&quot;channels&quot;:[]},&quot;hosts&quot;:{&quot;assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;secure_assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;secure_www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;embed_host&quot;:&quot;https:\/\/embed.tumblr.com&quot;,&quot;safe_host&quot;:&quot;https:\/\/safe.txmblr.com&quot;,&quot;platform_host&quot;:&quot;https:\/\/platform.tumblr.com&quot;},&quot;language&quot;:&quot;en_US&quot;,&quot;language_simple&quot;:&quot;en&quot;,&quot;assets&quot;:&quot;https:\/\/assets.tumblr.com\/client\/prod\/&quot;},&quot;Translations&quot;:{&quot;%1$sReport %2$s&#039;s post?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;,&quot;%1$sReport %2$s&#039;s reply?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our user guidelines, we&#039;ll remove it.%4$s&quot;,&quot;%1$sDelete your tip??%2$s&quot;:&quot;%1$sDelete your tip?%2$s&quot;,&quot;Deleting your tip&quot;:&quot;Deleting your tip will only remove it from the replies tab and notes. %1$sYou won&#039;t receive a refund of your tip.%2$s For further help contact %3$sTumblr Support%4$s.&quot;}}"></noscript>
+<script src="https://assets.tumblr.com/client/prod/standalone/tumblelog/index.build.js?_v=4a1639e90881218a9d0826bd29b5b53a"></script>
 </body>
 </html>
