@@ -3,21 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Стиляги - Солнечный Город">
-    <title>Стиляги - Солнечный Город</title>
-    <link rel="icon" type="image/x-icon" href="http://kirillfilatov.ucoz.com/Cover2.jpg">
+    <meta name="description" content="Звездный Час - The first studio album of Sunny City">
+    <title>Звездный Час - Солнечный Город</title>
+    <link rel="icon" type="image/x-icon" href="http://kirillfilatov.ucoz.com/Cover_5.jpg">
     
     <style>
         @font-face {
             font-family: 'Neo Sans Pro Regular';
             src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Neo Sans Pro Bold';
-            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Bold.woff2') format('woff2');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
@@ -35,8 +28,9 @@
 
         body {
             font-family: 'Neo Sans Pro Regular', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 18pt;
             color: #898989;
-            background: #ffd800 url('https://kirillfilatov.ucoz.com/6/background.png');
+            background: #f6d91a url('https://kirillfilatov.ucoz.com/6/background.png');
             background-attachment: fixed;
             background-position: center;
             line-height: 1.5;
@@ -148,19 +142,11 @@
         big_info {
             color: white;
             font-size: 11pt;
-            line-height: 1.5;
         }
 
         info {
             text-align: left;
             color: #898989;
-            font-size: 10pt;
-            line-height: 1.5;
-        }
-
-        notes {
-            text-align: left;
-            color: white;
             font-size: 10pt;
             line-height: 1.5;
         }
@@ -181,71 +167,99 @@
         button_download {
             padding: 5px 60px;
             font-size: 14px;
+            font-family: 'Neo Sans Pro Regular';
             color: #ffffff;
             text-align: center;
             border-radius: 3px;
-            background: linear-gradient(to top, #f9d510, #ffdf2c);
+            background: linear-gradient(to top, #f6d91a, #ffe53a);
         }
 
         button_download:hover {
-            background: linear-gradient(to top, #ffdf2c, #f9d510);
+            background: linear-gradient(to top, #ffe53a, #f6d91a);
         }
 
         button_download:active {
-            background: linear-gradient(to top, #f9d510, #f9d510);
+            background: linear-gradient(to top, #f6d91a, #f6d91a);
         }
 
         button_mini_download {
             padding: 3px 10px;
             font-size: 10px;
+            font-family: 'Neo Sans Pro Regular';
             color: #ffffff;
             text-align: center;
             border-radius: 3px 10px 10px 2px;
-            background: linear-gradient(to top, #f9d510, #ffdf2c);
+            background: linear-gradient(to top, #f6d91a, #ffe53a);
         }
 
         button_mini_download:hover {
-            background: linear-gradient(to top, #ffdf2c, #f9d510);
+            background: linear-gradient(to top, #ffe53a, #f6d91a);
         }
 
         button_mini_download:active {
-            background: linear-gradient(to top, #f9d510, #f9d510);
+            background: linear-gradient(to top, #f6d91a, #f6d91a);
         }
 
         .banner-container {
+            width: 614px;
+            height: 300px;
             box-shadow: inset 0 0 4px black;
-            background-color: #d0b227;
-            background-image: url('http://kirillfilatov.ucoz.com/6/background.png');
-            background-position: 0% 0%;
+            background: url('http://kirillfilatov.ucoz.com/6/color_pp_11.jpg') 0% 0%;
+            background-size: cover;
             border-collapse: collapse;
+            text-align: right;
+            vertical-align: top;
+            padding-right: 20px;
+            padding-top: 20px;
+        }
+
+        .showhide2 {
+            cursor: pointer;
+            padding: 2px 0px;
+            line-height: 20px;
+            width: 69px;
+            height: 18px;
+            vertical-align: top;
             text-align: center;
+            display: inline-block;
+            font-size: 10px;
+            font-family: 'Neo Sans Pro Regular';
+            color: white;
+            background: linear-gradient(#747572, #8d8d8d);
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
 
-        .description-box {
-            width: 590px;
-            margin: 0 auto;
+        .showhide2:hover {
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+        }
+
+        .showhide2:active {
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+        }
+
+        .obj2 {
+            width: 614px;
+            height: 420px;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+            background-color: #f6d91a;
+            background-image: url('http://kirillfilatov.ucoz.com/6/color_pp_11.jpg');
+            background-attachment: fixed;
+            background-position: 0% 0%;
+            background-repeat: repeat;
+            box-shadow: inset 0 0 4px black;
             padding: 10px;
+            display: none;
+            transition: all 0.3s ease;
         }
 
-        .description-inner {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            padding: 10px;
-        }
-
-        .description-table {
-            width: 570px;
-            border-collapse: collapse;
-        }
-
-        .description-text {
-            width: 500px;
-            font-size: 10pt;
-            line-height: 1.5;
-        }
-
-        .color-line {
-            height: 100px;
+        .obj2 img {
+            height: 400px;
+            display: inline-block;
         }
 
         .tracklist-section {
@@ -276,7 +290,7 @@
 
         .track-number {
             width: 30px;
-            text-align: center;
+            text-align: right;
         }
 
         audio {
@@ -304,7 +318,7 @@
                     <li><a href="//facefilatov.kirillfilatov.com">design</a></li>
                     <li><a href="/music">music</a></li>
                     <li><a href="/video">video</a></li>
-                    <li><a href="//kirillfilatov.ru/stilyagi"><img class="language" src="http://kirillfilatov.ucoz.com/6/russian.png" alt="RU"></a></li>
+                    <li><a href="//kirillfilatov.ru/zvezdnyj_chas"><img class="language" src="http://kirillfilatov.ucoz.com/6/russian.png" alt="RU"></a></li>
                 </ul>
             </nav>
         </header>
@@ -313,15 +327,15 @@
             <div class="album-layout">
                 <aside class="sidebar">
                     <big_info>
-                        Стиляги<br>
+                        Звездный Час<br>
                         Солнечный Город
                     </big_info>
                     <center>
-                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/H53vHB4MUQGw8g">
-                            <img src="http://kirillfilatov.ucoz.com/Cover2.jpg" alt="Стиляги Album Cover" class="album-cover">
+                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/hRVfWpZqEe9K2g">
+                            <img src="http://kirillfilatov.ucoz.com/Cover_5.jpg" alt="Звездный Час Album Cover" class="album-cover">
                         </a>
                         <br>
-                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/H53vHB4MUQGw8g">
+                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/hRVfWpZqEe9K2g">
                             <button_download>Download</button_download>
                         </a>
                         <br>
@@ -330,38 +344,33 @@
                         <br>
                         <big_info>Free</big_info><br>
                         Genres: Pop<br>
-                        Released: Feb 26, 2011<br>
-                        ℗ 2011 facefilatov<br>
+                        Released: Aug 22 2012<br>
+                        ℗ 2012 facefilatov<br>
                         <img src="http://kirillfilatov.ucoz.com/6/russian.png" alt="Russian" class="small-flag"> Russian Album
                         <br><br>
                         <big_info>Ratings</big_info><br><br>
-                        <a href="https://twitter.com/intent/tweet?text=Stilyagi%20by%20Solnechny%20Gorod&related=KirillFilatov" target="_blank" style="color: #1da1f2; text-decoration: none;">Tweet</a>
+                        <a href="https://twitter.com/intent/tweet?text=Zvezdnyj%20Chas%20by%20Solnechny%20Gorod&related=KirillFilatov" target="_blank" style="color: #1da1f2; text-decoration: none;">Tweet</a>
                         <br><br>
                     </info>
                 </aside>
 
                 <div class="main-content">
                     <div class="banner-container">
-                        <div class="description-box">
-                            <div class="description-inner">
-                                <table class="description-table">
-                                    <tr>
-                                        <td class="description-text">
-                                            <notes>Recording of the album began in September 2010. The first three tracks were made on New Year's show and Teachers' Day. The last two tracks were recorded in the studio, as bonus tracks.</notes>
-                                        </td>
-                                        <td>
-                                            <center>
-                                                <img src="http://kirillfilatov.ucoz.com/6/color_line.png" alt="" class="color-line">
-                                            </center>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+                        <img src="http://kirillfilatov.ucoz.com/6/itunes_gradient_booklet.png" alt="iTunes Booklet">
+                        <br><br>
+                        <div class="showhide2">Show</div>
+                        <br><br>
+                    </div>
+
+                    <br>
+
+                    <div class="obj2">
+                        <img src="http://kirillfilatov.ucoz.com/6/digital-booklet-zvezdnyj-chas1.jpg" alt="Booklet Page 1">
+                        <img src="http://kirillfilatov.ucoz.com/6/digital-booklet-zvezdnyj-chas2.jpg" alt="Booklet Page 2">
+                        <img src="http://kirillfilatov.ucoz.com/6/digital-booklet-zvezdnyj-chas4.jpg" alt="Booklet Page 3">
                     </div>
 
                     <section class="tracklist-section">
-                        <br>
                         <table class="tracklist-table">
                             <thead>
                                 <tr>
@@ -379,89 +388,239 @@
                                 <tr>
                                     <td>
                                         <audio controls>
-                                            <source src="http://kirillfilatov.ucoz.com/Preview_2.mp3" type="audio/mpeg">
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200014.mp3" type="audio/mpeg">
                                         </audio>
                                     </td>
                                     <td class="track-number">1</td>
-                                    <td>Вася</td>
+                                    <td>Звездный Час</td>
                                     <td>Солнечный Город</td>
                                     <td></td>
-                                    <td>3:14</td>
+                                    <td>3:25</td>
                                     <td>Free</td>
-                                    <td>
-                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/Zy254dvpFSHQ1A">
-                                            <button_mini_download>Download</button_mini_download>
-                                        </a>
-                                    </td>
+                                    <td>Only Album</td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <audio controls>
-                                            <source src="http://kirillfilatov.ucoz.com/Preview_3.mp3" type="audio/mpeg">
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200015.mp3" type="audio/mpeg">
                                         </audio>
                                     </td>
                                     <td class="track-number">2</td>
-                                    <td>Наш Учитель</td>
+                                    <td>Звездный Джазмен (Acapella Version)</td>
                                     <td>Солнечный Город</td>
                                     <td></td>
-                                    <td>2:53</td>
+                                    <td>1:40</td>
                                     <td>Free</td>
-                                    <td>
-                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/iYj16MSX-2gG8Q">
-                                            <button_mini_download>Download</button_mini_download>
-                                        </a>
-                                    </td>
+                                    <td>Only Album</td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <audio controls>
-                                            <source src="http://kirillfilatov.ucoz.com/Preview_4.mp3" type="audio/mpeg">
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200016.mp3" type="audio/mpeg">
                                         </audio>
                                     </td>
                                     <td class="track-number">3</td>
-                                    <td>Great Ball of Fire</td>
-                                    <td>Анастасия Михайлова &<br>Кирилл Филатов</td>
+                                    <td>Звездный Джазмен</td>
+                                    <td>Солнечный Город</td>
                                     <td></td>
-                                    <td>1:52</td>
+                                    <td>1:37</td>
                                     <td>Free</td>
-                                    <td>
-                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/5_GX5FNJ2DIy3g">
-                                            <button_mini_download>Download</button_mini_download>
-                                        </a>
-                                    </td>
+                                    <td>Only Album</td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <audio controls>
-                                            <source src="http://kirillfilatov.ucoz.com/Preview_5.mp3" type="audio/mpeg">
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200017.mp3" type="audio/mpeg">
                                         </audio>
                                     </td>
                                     <td class="track-number">4</td>
-                                    <td>Great Ball of Fire (Chorus Version)</td>
+                                    <td>Raise It Up</td>
                                     <td>Солнечный Город</td>
                                     <td></td>
-                                    <td>1:49</td>
+                                    <td>2:26</td>
                                     <td>Free</td>
-                                    <td>
-                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/zWmr-EJnDC-Xwg">
-                                            <button_mini_download>Download</button_mini_download>
-                                        </a>
-                                    </td>
+                                    <td>Only Album</td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <audio controls>
-                                            <source src="http://kirillfilatov.ucoz.com/Preview_6.mp3" type="audio/mpeg">
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200018.mp3" type="audio/mpeg">
                                         </audio>
                                     </td>
                                     <td class="track-number">5</td>
-                                    <td>Great Ball of Fire (Experimental Remix)</td>
+                                    <td>Я и Море</td>
                                     <td>Солнечный Город</td>
                                     <td></td>
-                                    <td>2:27</td>
+                                    <td>2:22</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200019.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">6</td>
+                                    <td>Землянка</td>
+                                    <td>Солнечный Город</td>
+                                    <td></td>
+                                    <td>1:45</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200020.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">7</td>
+                                    <td>Осенний Блюз</td>
+                                    <td>Солнечный Город</td>
+                                    <td></td>
+                                    <td>3:23</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200021.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">8</td>
+                                    <td>Представь Себе</td>
+                                    <td>Солнечный Город</td>
+                                    <td></td>
+                                    <td>2:34</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200022.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">9</td>
+                                    <td>Небо в Глазах</td>
+                                    <td>Солнечный Город</td>
+                                    <td></td>
+                                    <td>2:54</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200023.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">10</td>
+                                    <td>Poker Face</td>
+                                    <td>Солнечный Город</td>
+                                    <td></td>
+                                    <td>3:37</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200024.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">11</td>
+                                    <td>When I Look at You</td>
+                                    <td>Каролина Хуршудян</td>
+                                    <td></td>
+                                    <td>4:06</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200025.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">12</td>
+                                    <td>It Will Rain</td>
+                                    <td>Настя Михайлова</td>
+                                    <td></td>
+                                    <td>4:16</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200026.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">13</td>
+                                    <td>Someone Like You</td>
+                                    <td>Катя Журавлева</td>
+                                    <td></td>
+                                    <td>4:35</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200027.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">14</td>
+                                    <td>Songbird</td>
+                                    <td>Рита Синицына</td>
+                                    <td></td>
+                                    <td>3:16</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200028.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">15</td>
+                                    <td>Намалюю</td>
+                                    <td>Рита Синицына</td>
+                                    <td></td>
+                                    <td>3:04</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <audio controls>
+                                            <source src="http://kirillfilatov.ucoz.com/audio/RUFFR1200029.mp3" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                    <td class="track-number">16</td>
+                                    <td>Пришла Пора Соборов Кафедральных</td>
+                                    <td>Кирилл Филатов</td>
+                                    <td></td>
+                                    <td>3:23</td>
+                                    <td>Free</td>
+                                    <td>Only Album</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="text-align: left;">
+                                        <img src="http://kirillfilatov.ucoz.com/2/booklet.png" alt="Booklet">
+                                    </td>
+                                    <td>Digital Booklet - Звездный Час</td>
+                                    <td>Солнечный Город</td>
+                                    <td></td>
+                                    <td></td>
                                     <td>Free</td>
                                     <td>
-                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/bnrO3S0cgUm90Q">
+                                        <a href="https://getfile.dokpub.com/yandex/get/https://yadi.sk/i/ETYM0s-WfPDhWg">
                                             <button_mini_download>Download</button_mini_download>
                                         </a>
                                     </td>
@@ -469,7 +628,7 @@
                             </tbody>
                         </table>
                         <br>
-                        Total: 5 Songs
+                        17 объектов
                     </section>
                 </div>
             </div>
@@ -484,6 +643,26 @@
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-46811598-1', 'kirillfilatov.com');
         ga('send', 'pageview');
+    </script>
+
+    <!-- Show/Hide Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const showButton = document.querySelector('.showhide2');
+            const obj2 = document.querySelector('.obj2');
+            
+            if (showButton && obj2) {
+                showButton.addEventListener('click', function() {
+                    if (obj2.style.display === 'none' || obj2.style.display === '') {
+                        obj2.style.display = 'block';
+                        showButton.textContent = 'Hide';
+                    } else {
+                        obj2.style.display = 'none';
+                        showButton.textContent = 'Show';
+                    }
+                });
+            }
+        });
     </script>
 
     <!-- Yandex.Metrika counter -->
