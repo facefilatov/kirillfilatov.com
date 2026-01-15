@@ -20,7 +20,7 @@
     <style>
         @font-face {
             font-family: 'Neo Sans Pro Light';
-            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Light.woff2') format('woff2');
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Light.woff') format('woff');
             font-weight: 300;
             font-style: normal;
             font-display: swap;
@@ -78,7 +78,7 @@
         }
         @media (orientation: portrait) {
             .loading-text {
-                font-size: 20vw;
+                font-size: 10vw;
             }
         }
     </style>
@@ -136,9 +136,13 @@
     </main>
 
     <script>
-        // Hide loading text once video starts playing
+        // Start video at 1.5 seconds and hide loading text
         const video = document.querySelector('.intro-video');
         const loadingText = document.querySelector('.loading-text');
+        
+        video.addEventListener('loadedmetadata', function() {
+            video.currentTime = 1.5;
+        });
         
         video.addEventListener('loadeddata', function() {
             setTimeout(function() {
