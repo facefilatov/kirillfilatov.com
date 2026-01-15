@@ -72,6 +72,7 @@
             pointer-events: none;
             z-index: 1;
             opacity: 1;
+            transition: opacity 0.5s ease;
         }
         .loading-text.hidden {
             opacity: 0;
@@ -136,12 +137,12 @@
     </main>
 
     <script>
-        // Start video at 1.5 seconds and hide loading text
+        // Start video at 1 second and hide loading text
         const video = document.querySelector('.intro-video');
         const loadingText = document.querySelector('.loading-text');
         
         video.addEventListener('loadedmetadata', function() {
-            video.currentTime = 1.5;
+            video.currentTime = 1;
         });
         
         video.addEventListener('loadeddata', function() {
