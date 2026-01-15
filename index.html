@@ -18,23 +18,28 @@
     
     <!-- Styles -->
     <style>
+        @font-face {
+            font-family: 'Neo Sans Pro Light';
+            src: url('https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/fonts/NeoSansPro-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         html, body {
             width: 100%;
             height: 100%;
             overflow: hidden;
             background-color: #000;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
-
         .video-container {
             position: fixed;
             top: 0;
@@ -43,18 +48,39 @@
             height: 100vh;
             overflow: hidden;
         }
-
         .video-link {
             display: block;
             width: 100%;
             height: 100%;
+            position: relative;
         }
-
         .intro-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+        .loading-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Neo Sans Pro Light', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 50vw;
+            color: #ffffff;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        .loading-text.hidden {
+            opacity: 0;
+        }
+        @media (orientation: portrait) {
+            .loading-text {
+                font-size: 20vw;
+            }
         }
     </style>
     
@@ -93,22 +119,33 @@
     </noscript>
     <!-- /Yandex.Metrika counter -->
 </head>
-
 <body>
     <main class="video-container">
         <a href="//facefilatov.kirillfilatov.com" class="video-link" aria-label="Visit facefilatov">
+            <div class="loading-text">kirillfilatov.com</div>
             <video 
                 class="intro-video"
                 autoplay 
                 loop 
                 playsinline 
                 muted
-                poster="https://cdn.jsdelivr.net/gh/facefilatov/kirillfilatov.com@main/images/Placeholder.webp"
             >
                 <source src="https://kirillfilatov.ucoz.com/2019/shower_intro.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </a>
     </main>
+
+    <script>
+        // Hide loading text once video starts playing
+        const video = document.querySelector('.intro-video');
+        const loadingText = document.querySelector('.loading-text');
+        
+        video.addEventListener('loadeddata', function() {
+            setTimeout(function() {
+                loadingText.classList.add('hidden');
+            }, 500);
+        });
+    </script>
 </body>
 </html>
